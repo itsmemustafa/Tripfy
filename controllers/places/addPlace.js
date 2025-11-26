@@ -4,14 +4,14 @@ const addPlace = async (req, res) => {
   const { name, category, subcategory, location, description, images } =
     req.body;
 
-  // only enforce minimum required fields
+
   if (!name || !category || !location) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: "name, category and location are required" });
   }
 
-  // ensure location has city and coordinates
+
   if (
     !location.city ||
     !location.coordinates ||
@@ -38,4 +38,5 @@ const addPlace = async (req, res) => {
     .status(201)
     .json({ message: "Place added successfully", place: newPlace });
 };
+
 export default addPlace;
