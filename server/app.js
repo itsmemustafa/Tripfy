@@ -12,6 +12,7 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 import authRoutes from "./routes/auth.js";
 import placesRouter from './routes/place.js'
 import reviewsRouter from './routes/reviews.js'
+import cookieParser from "cookie-parser";
 const app = express();
 
 env.config();
@@ -26,11 +27,15 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cookieParser(process.env.JWT_SECRET));
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  credentials: true
+}));
 
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/place",placesRouter);
-app.use('/api/v1/reviews',reviewsRouter);
+app.use("/api/v1/place", placesRouter);
+app.use('/api/v1/reviews', reviewsRouter);
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 

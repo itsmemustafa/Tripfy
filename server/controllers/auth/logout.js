@@ -4,7 +4,7 @@ import { UnauthenticatedError } from "../../errors/index.js";
 import crypto from "crypto";
 
 const logout = async (req, res) => {
-  const { refreshToken } = req.body;
+  const refreshToken = req.signedCookies.refreshToken;
 
   if (!refreshToken) {
     throw new UnauthenticatedError("No refresh token provided");
@@ -28,6 +28,15 @@ const logout = async (req, res) => {
   if (result.matchedCount === 0) {
     throw new UnauthenticatedError("Invalid refresh token");
   }
+
+  res.cookie('token', 'logout', {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+  res.cookie('refreshToken', 'logout', {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
 
   res.status(StatusCodes.OK).json({
     msg: "Logged out successfully",

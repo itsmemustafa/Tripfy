@@ -34,11 +34,27 @@ const login = async (req, res) => {
   existUser.refreshToken = hashedRefreshToken;
   await existUser.save();
 
+  /* Attach cookies */
+  const oneDay = 1000 * 60 * 60 * 24;
+  const thirtyDays = 1000 * 60 * 60 * 24 * 30;
+
+  res.cookie('token', accessToken, {
+    httpOnly: true,
+    expires: new Date(Date.now() + oneDay),
+    secure: process.env.NODE_ENV === 'production',
+    signed: true,
+  });
+
+  res.cookie('refreshToken', refreshToken, {
+    httpOnly: true,
+    expires: new Date(Date.now() + thirtyDays),
+    secure: process.env.NODE_ENV === 'production',
+    signed: true,
+  });
+
   res.status(StatusCodes.OK).json({
     msg: "Login successful",
-    user: { name: existUser.name, email: existUser.email , role: existUser.role},
-    accessToken,
-    refreshToken,
+    user: { name: existUser.name, email: existUser.email, role: existUser.role },
   });
 };
 export default login;

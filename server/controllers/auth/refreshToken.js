@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import { UnauthenticatedError } from "../../errors/index.js";
 
 const refreshToken = async (req, res) => {
-  const { refreshToken } = req.body;
+  const refreshToken = req.signedCookies.refreshToken;
   if (!refreshToken)
     throw new UnauthenticatedError("No refresh token provided");
 
@@ -32,10 +32,26 @@ const refreshToken = async (req, res) => {
   await user.save();
 
   // Return new access token and refresh token
-  res.status(StatusCodes.OK).json({
-    accessToken,
-    newRefreshToken, // Return the new Refresh token 
+  /* Attach cookies */
+  const oneDay = 1000 * 60 * 60 * 24;
+  const thirtyDays = 1000 * 60 * 60 * 24 * 30;
+
+  res.cookie('token', accessToken, {
+    httpOnly: true,
+    expires: new Date(Date.now() + oneDay),
+    secure: process.env.NODE_ENV === 'production',
+    signed: true,
   });
+
+  res.cookie('refreshToken', newRefreshToken, {
+    httpOnly: true,
+    expires: new Date(Date.now() + thirtyDays),
+    secure: process.env.NODE_ENV === 'production',
+    signed: true,
+  });
+
+  // Return new access token and refresh token
+  res.status(StatusCodes.OK).json({ msg: 'Token refreshed' });
 };
 
 export default refreshToken;
