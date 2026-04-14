@@ -1,0 +1,155 @@
+/* Day Container */
+.day-details {
+    padding: 32px;
+    max-width: 100%;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.day-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.day-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 4px 0;
+}
+
+.day-date {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Places List  */
+.places-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    position: relative;
+}
+
+/* Vertical Line for Timeline */
+.places-list::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 20px;
+    width: 1px;
+    background: #e5e5e5;
+    z-index: 1;
+}
+
+.place-card-preview {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    transition: none;
+    position: relative;
+    box-shadow: none;
+}
+
+.place-card-preview:hover {
+    box-shadow: none;
+    background: transparent;
+    border-color: transparent;
+}
+
+.place-order {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: #111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #e5e5e5;
+    z-index: 2;
+
+}
+
+
+.place-card-preview:hover .place-order {
+    border-color: #111;
+    background: #111;
+    color: white;
+}
+
+.place-content {
+    flex: 1;
+    padding-top: 5px;
+}
+
+.place-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.place-header h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+}
+
+.visit-time {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #888;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.place-description {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+}
+
+.place-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #f9f9f9;
+    border-radius: 8px;
+
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    border-left: 3px solid #ddd;
+}
+
+/* No Places Empty State */
+.no-places {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-style: italic;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+}

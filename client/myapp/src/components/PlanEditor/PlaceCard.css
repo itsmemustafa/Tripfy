@@ -1,0 +1,107 @@
+/* PlaceCard.css */
+.places-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.place-card {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    transition: all 0.2s;
+}
+
+.place-card.dragging {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: rotate(1deg);
+}
+
+.place-card:hover {
+    border-color: #3b82f6;
+}
+
+.place-order-badge {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.place-details {
+    flex: 1;
+}
+
+.place-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.place-header h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.visit-time-badge {
+    padding: 4px 12px;
+    background: white;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+}
+
+.place-description {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 8px 0;
+}
+
+.place-note-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 60px;
+    transition: border-color 0.2s;
+}
+
+.place-note-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.place-note-display {
+    padding: 12px;
+    background: #fef3c7;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #92400e;
+    margin-top: 8px;
+}
+
+.no-places-message {
+    text-align: center;
+    padding: 40px;
+    color: #9ca3af;
+    font-size: 14px;
+}

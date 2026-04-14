@@ -1,0 +1,93 @@
+.plan-editor-header {
+    padding: 40px;
+    color: white;
+    position: relative;
+}
+
+.view-only-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plan-editor-title {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    padding: 8px 0;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+}
+
+.title-input:focus {
+    outline: none;
+    border-bottom-color: white;
+}
+
+.title-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.plan-editor-title h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.plan-meta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge-status.draft {
+    background: rgba(251, 191, 36, 0.3);
+}
+
+.badge-status.published {
+    background: rgba(34, 197, 94, 0.3);
+}
+
+@media (max-width: 768px) {
+    .plan-editor-header {
+        padding: 24px 20px;
+    }
+
+    .title-input,
+    .plan-editor-title h1 {
+        font-size: 24px;
+    }
+
+    .view-only-badge {
+        top: 12px;
+        right: 12px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

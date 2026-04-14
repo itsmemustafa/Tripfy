@@ -1,0 +1,141 @@
+/* DayCard.css */
+.days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.day-card {
+    background: white;
+    border-radius: 16px;
+    border: 2px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.day-card.dragging {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: rotate(2deg);
+}
+
+.day-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: #f9fafb;
+    border-bottom: 2px solid #e5e7eb;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.day-card-header:hover {
+    background: #f3f4f6;
+}
+
+.drag-handle {
+    cursor: grab;
+    color: #9ca3af;
+    font-size: 20px;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.drag-handle:hover {
+    color: #3b82f6;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+.day-info {
+    flex: 1;
+}
+
+.day-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+}
+
+.day-date {
+    color: #6b7280;
+    font-size: 14px;
+    margin: 0 0 4px 0;
+}
+
+.places-count {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.day-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 16px;
+}
+
+.icon-btn:hover:not(:disabled) {
+    background: #f3f4f6;
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.icon-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.expand-btn {
+    font-size: 12px;
+}
+
+.day-card-content {
+    padding: 20px;
+    animation: expandContent 0.3s ease-out;
+}
+
+@keyframes expandContent {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 2000px;
+    }
+}
+
+@media (max-width: 768px) {
+    .day-card-header {
+        padding: 16px;
+    }
+
+    .day-info h3 {
+        font-size: 18px;
+    }
+
+    .day-actions {
+        flex-direction: column;
+    }
+}
