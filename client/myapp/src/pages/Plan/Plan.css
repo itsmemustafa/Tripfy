@@ -1,0 +1,117 @@
+/* ============================================
+   PLAN PAGE STYLES
+   Modern Minimalist Travel UI - WayFarer Theme
+   ============================================ */
+
+.plan-page {
+    min-height: 100vh;
+    background: var(--bg-body);
+}
+
+/* Header */
+.plan-header {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    padding: var(--space-8) 0;
+    color: white;
+}
+
+.plan-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.plan-header__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-lg);
+}
+
+.plan-header__back:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.plan-header__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Main */
+.plan-main {
+    padding: 100px 0 var(--space-20);
+}
+
+.plan-layout {
+    display: grid;
+    gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+    .plan-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Extracted from JSX inline styles */
+.nav-link-nounderline {
+  text-decoration: none;
+}
+
+.spinner-inline {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.plan-loading-large {
+  min-height: 60vh;
+}
+
+.plan-back-link {
+  margin-bottom: 1.5rem;
+}
+
+.plan-back-btn {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.plan-back-icon {
+  margin-right: 0.5rem;
+}
+
+.sticky-day-tabs {
+.plan-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-16);
+    color: var(--text-secondary);
+}
+
+.plan-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--color-stone-200);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--space-4);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Messages */

@@ -1,0 +1,323 @@
+.plan-details-page {
+    min-height: 100vh;
+    background: #ffffff;
+    /* Clean white background */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #111;
+}
+
+
+.plan-details-header {
+    padding: 6rem 0 3rem;
+    text-align: center;
+    background: white;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.plan-details-header .container {
+    max-width: 800px;
+    /* Focus width */
+    margin: 0 auto;
+}
+
+.plan-details-header__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+}
+
+.plan-details-header__back:hover {
+    color: #111;
+}
+
+.plan-details-header__title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: #111;
+    margin-bottom: 1.5rem;
+}
+
+.plan-details-header__meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.plan-details-header__meta-item {
+    font-size: 1rem;
+    color: #555;
+    background: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.plan-details-header__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 50px;
+    /* Pill buttons */
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background: #111;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background: white;
+    color: #111;
+    border: 1px solid #e5e5e5;
+}
+
+.btn-secondary:hover {
+    border-color: #111;
+    background: #fafafa;
+}
+
+
+.plan-details-main {
+    padding: 4rem 0;
+}
+
+/* Timeline Container */
+.plan-days-container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    /* Space for line */
+}
+
+/* Continuous Vertical Line */
+.plan-days-container::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    bottom: 0;
+    left: 15px;
+    /* Center of 32px dot (16px) - 1px width */
+    width: 2px;
+    background: #e5e5e5;
+    z-index: 0;
+}
+
+/* Day Section */
+.plan-day-section {
+    position: relative;
+    padding-left: 3rem;
+    /* Space from line */
+    margin-bottom: 4rem;
+}
+
+.plan-day-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Day Node (Dot) */
+/* Day Card - Restored Container */
+.plan-day-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 0;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.plan-day-card:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+
+.plan-day-header {
+    position: absolute;
+    left: 0;
+    top: 24px;
+
+    width: 32px;
+    height: 32px;
+    background: #111;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    z-index: 2;
+    box-shadow: 0 0 0 8px #ffffff;
+
+}
+
+/* Places List inside Day */
+.plan-days-places-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.roadmap-place-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 16px;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: default;
+}
+
+.roadmap-place-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border-color: #e5e5e5;
+}
+
+.roadmap-place-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: #f5f5f5;
+}
+
+.roadmap-place-info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 0.25rem 0;
+}
+
+.roadmap-place-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Drag Handle / Delete */
+.btn-delete-day {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: #ccc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+    padding: 5px;
+}
+
+.btn-delete-day:hover {
+    color: #ef4444;
+}
+
+
+.plan-details-loading,
+.plan-places-empty {
+    text-align: center;
+    padding: 4rem;
+    color: #999;
+}
+
+.plan-details-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #eee;
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hide old timeline fluff */
+.plan-days-connector,
+.plan-info-grid,
+.plan-details-layout,
+.plan-details-card__title,
+.plan-details-card__icon {
+
+    display: none !important;
+
+}
+
+
+.plan-details-layout {
+    display: block !important;
+}
+
+.plan-details-card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+    margin-bottom: 0 !important;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .plan-details-header__title {
+        font-size: 2.5rem;
+    }
+
+    .plan-days-container {
+        padding-left: 1rem;
+    }
+
+    .plan-days-container::before {
+        left: 19px;
+        /* Keep aligned */
+    }
+
+    .roadmap-place-item {
+        flex-direction: row;
+        /* Keep row on mobile if image is small */
+        padding: 1rem;
+    }
+
+    .roadmap-place-img {
+        width: 60px;
+        height: 60px;
+    }
+}
