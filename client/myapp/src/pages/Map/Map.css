@@ -1,0 +1,115 @@
+.map-page {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Loading State */
+.map-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--bg-body);
+    gap: var(--space-4);
+}
+
+.map-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--color-stone-200);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.map-loading p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+/* Error State */
+.map-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--bg-body);
+    padding: var(--space-4);
+}
+
+.map-error p {
+    color: var(--color-accent-dark);
+    font-size: var(--font-size-lg);
+    text-align: center;
+}
+
+.map-gl-container {
+    width: 100%;
+    height: 100vh;
+}
+
+
+@media (max-width: 768px) {
+    .map-location-button {
+        bottom: 100px;
+        right: 16px;
+        min-width: 0;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    .map-location-button span {
+        display: none;
+    }
+
+    .map-location-error {
+        bottom: 160px;
+        right: 16px;
+        left: 16px;
+        max-width: none;
+    }
+
+    /* Move filter toggle down or to top right */
+    .map-filter-toggle {
+        top: 20px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+
+    /* Convert Filters panel to a Bottom Sheet */
+    .map-filters-panel {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 24px 24px 0 0;
+        transform: translateY(100%);
+        max-height: 85vh;
+        z-index: 1090;
+        padding-bottom: 80px;
+    }
+
+    .map-filters-panel.is-open {
+        transform: translateY(0);
+    }
+
+    /* Make content scrollable with padding */
+    .map-filters-content {
+        max-height: calc(85vh - 140px);
+        padding: 16px 20px;
+    }
+}
