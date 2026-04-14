@@ -1,0 +1,61 @@
+# Tripfy Docker Compose Setup
+# Usage:
+#   cp server/.env.example server/.env
+#   docker compose up --build
+# Access: http://localhost (port 80)
+
+services:
+  # Backend container
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: tripfy-backend
+    container_name: tripfy-backend
+    restart: unless-stopped
+
+    # Mount secrets at runtime
+    volumes:
+      - ./server/.env:/app/.env:ro
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+
+    networks:
+      - tripfy-net
+
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # Frontend container
+  frontend:
+    build:
+      context: ./client/myapp
+      dockerfile: Dockerfile
+      args:
+        # Pass env vars to build
+        VITE_API_BASE_URL: /api/v1
+        VITE_APP_NAME: Tripfy
+        VITE_APP_ENV: production
+    image: tripfy-frontend
+    container_name: tripfy-frontend
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+
+    networks:
+      - tripfy-net
+
+    depends_on:
+      backend:
+        condition: service_healthy
+
+# Internal network
+networks:
+  tripfy-net:
+    driver: bridge
