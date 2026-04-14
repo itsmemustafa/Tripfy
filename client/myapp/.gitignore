@@ -1,0 +1,4 @@
+# client/myapp/.gitignore — defers to root; adds Vite-specific rules
+
+# Storybook / component preview build outputs (if added later)
+storybook-static/

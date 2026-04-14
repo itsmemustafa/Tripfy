@@ -1,0 +1,29 @@
+#  server/.dockerignore 
+# Build context: ./server  (used by docker compose)
+
+# Dependencies (reinstalled in container)
+node_modules
+
+# Env files — injected at runtime via docker compose env_file
+.env
+.env.*
+!.env.example
+
+# Test files — not needed at runtime
+tests
+coverage
+test-output
+vitest.config*
+
+# Dev tooling
+seed.js
+
+# IDE / OS
+.vscode
+.idea
+*.swp
+.DS_Store
+Thumbs.db
+
+# Docs
+*.md
