@@ -1,0 +1,227 @@
+.add-itinerary-modal {
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-itinerary-modal__subtitle {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-base);
+}
+
+.add-itinerary-modal__subtitle strong {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Loading State */
+.add-itinerary-modal__loading {
+    text-align: center;
+    padding: var(--space-12) var(--space-4);
+}
+
+.add-itinerary-modal__loading .spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--color-stone-200);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto var(--space-4);
+}
+
+/* Empty State */
+.add-itinerary-modal__empty {
+    text-align: center;
+    padding: var(--space-12) var(--space-4);
+}
+
+.add-itinerary-modal__empty-icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-4);
+}
+
+.add-itinerary-modal__empty h3 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.add-itinerary-modal__empty p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+}
+
+/* Plans List */
+.add-itinerary-modal__plans {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: var(--space-4);
+    padding-right: var(--space-2);
+}
+
+/* Scrollbar styling */
+.add-itinerary-modal__plans::-webkit-scrollbar {
+    width: 6px;
+}
+
+.add-itinerary-modal__plans::-webkit-scrollbar-track {
+    background: var(--bg-body);
+    border-radius: var(--radius-full);
+}
+
+.add-itinerary-modal__plans::-webkit-scrollbar-thumb {
+    background: var(--color-stone-300);
+    border-radius: var(--radius-full);
+}
+
+.add-itinerary-modal__plans::-webkit-scrollbar-thumb:hover {
+    background: var(--color-stone-400);
+}
+
+/* Plan Option */
+.plan-option {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: 2px solid var(--color-stone-200);
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    background: white;
+}
+
+.plan-option:hover {
+    border-color: var(--color-primary);
+    background: var(--bg-body);
+}
+
+.plan-option--selected {
+    border-color: var(--color-primary);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.plan-option__radio {
+    padding-top: 2px;
+}
+
+.plan-option__radio input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+.plan-option__content {
+    flex: 1;
+}
+
+.plan-option__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin: 0 0 var(--space-2) 0;
+}
+
+.plan-option__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.plan-option__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+.plan-option__meta-item svg {
+    color: var(--color-primary);
+}
+
+/* Divider */
+.add-itinerary-modal__divider {
+    position: relative;
+    text-align: center;
+    margin: var(--space-6) 0;
+}
+
+.add-itinerary-modal__divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-stone-200);
+}
+
+.add-itinerary-modal__divider span {
+    position: relative;
+    display: inline-block;
+    padding: 0 var(--space-4);
+    background: white;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+/* New Trip Button */
+.add-itinerary-modal__new-btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Button Spinner */
+.btn-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: var(--space-2);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .add-itinerary-modal {
+        max-width: 100%;
+        margin: var(--space-4);
+    }
+
+    .add-itinerary-modal__plans {
+        max-height: 300px;
+    }
+
+    .plan-option {
+        padding: var(--space-3);
+    }
+
+    .plan-option__title {
+        font-size: var(--font-size-sm);
+    }
+
+    .plan-option__meta {
+        gap: var(--space-2);
+    }
+
+    .plan-option__meta-item {
+        font-size: 11px;
+    }
+}

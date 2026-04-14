@@ -1,0 +1,239 @@
+ /* Only visible on mobile */
+ .btm-nav {
+     display: none;
+ }
+
+ @media (max-width: 768px) {
+     .btm-nav {
+         display: block;
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         width: 100%;
+         z-index: 1100;
+         padding: 0 12px 8px;
+         pointer-events: none;
+         transition: transform 0.3s cubic-bezier(0.3, 0, 0, 1);
+         box-sizing: border-box;
+         overflow: hidden;
+     }
+
+     .btm-nav--hidden {
+         transform: translateY(120px);
+     }
+
+     .btm-nav__bar {
+         display: flex;
+         align-items: center;
+         justify-content: space-around;
+         background: var(--color-primary);
+         border-radius: 28px;
+         padding: 6px 8px;
+         box-shadow:
+             0 -2px 20px rgba(37, 99, 235, 0.25),
+             0 4px 24px rgba(0, 0, 0, 0.12);
+         pointer-events: auto;
+         width: 100%;
+         max-width: 420px;
+         margin: 0 auto;
+         box-sizing: border-box;
+     }
+
+     /* ── Tab ── */
+     .btm-nav__tab {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 6px;
+         padding: 10px 14px;
+         border-radius: 22px;
+         text-decoration: none;
+         color: rgba(255, 255, 255, 0.55);
+         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+         flex-shrink: 1;
+         position: relative;
+         min-width: 0;
+     }
+
+     .btm-nav__tab:hover {
+         color: rgba(255, 255, 255, 0.8);
+     }
+
+     /* ── Active pill ── */
+     .btm-nav__tab--active {
+         background: #fff;
+         color: var(--color-primary);
+         padding: 10px 18px;
+         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+     }
+
+     .btm-nav__tab--active:hover {
+         color: var(--color-primary);
+     }
+
+     /* ── Icon ── */
+     .btm-nav__icon {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 22px;
+         height: 22px;
+         flex-shrink: 0;
+     }
+
+     .btm-nav__icon svg {
+         display: block !important;
+         /* override global svg rules */
+         width: 22px;
+         height: 22px;
+     }
+
+     .btm-nav__tab--active .btm-nav__icon svg {
+         stroke: var(--color-primary);
+     }
+
+     /* ── Label (only shows when active) ── */
+     .btm-nav__label {
+         font-size: 12px;
+         font-weight: 700;
+         font-family: var(--font-family);
+         letter-spacing: -0.01em;
+         white-space: nowrap;
+         animation: btm-label-in 0.25s ease-out;
+     }
+
+     @keyframes btm-label-in {
+         from {
+             opacity: 0;
+             width: 0;
+             transform: translateX(-4px);
+         }
+
+         to {
+             opacity: 1;
+             width: auto;
+             transform: translateX(0);
+         }
+     }
+
+     /* ── Push content up to make room ── */
+     .app-content {
+         padding-bottom: 80px !important;
+     }
+
+     /* ── Hide mobile hamburger and mobile menu ── */
+     .header__mobile-toggle {
+         display: none !important;
+     }
+
+     .header__mobile-menu {
+         display: none !important;
+     }
+
+     /* ── Profile Menu ── */
+     .btm-nav__profile-menu {
+         position: fixed;
+         bottom: 80px;
+         right: 12px;
+         width: calc(100% - 24px);
+         max-width: 320px;
+         background: #fff;
+         border-radius: var(--radius-xl);
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+         z-index: 1090;
+         /* just below bottom nav */
+         padding: 16px;
+         animation: btm-menu-up 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+         transform-origin: bottom right;
+     }
+
+     @keyframes btm-menu-up {
+         from {
+             opacity: 0;
+             transform: translateY(20px) scale(0.95);
+         }
+
+         to {
+             opacity: 1;
+             transform: translateY(0) scale(1);
+         }
+     }
+
+     .btm-nav__profile-header {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         padding-bottom: 16px;
+         border-bottom: 1px solid var(--color-stone-100);
+         margin-bottom: 8px;
+     }
+
+     .btm-nav__profile-avatar {
+         width: 44px;
+         height: 44px;
+         border-radius: 50%;
+         background: rgba(37, 99, 235, 0.1);
+         color: var(--color-primary);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 18px;
+         font-weight: 700;
+         flex-shrink: 0;
+     }
+
+     .btm-nav__profile-info {
+         display: flex;
+         flex-direction: column;
+     }
+
+     .btm-nav__profile-name {
+         font-weight: 700;
+         color: var(--text-primary);
+         font-size: 15px;
+         line-height: 1.2;
+     }
+
+     .btm-nav__profile-role {
+         font-size: 12px;
+         color: var(--text-muted);
+         margin-top: 2px;
+     }
+
+     .btm-nav__profile-actions {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+     }
+
+     .btm-nav__profile-btn {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         width: 100%;
+         padding: 12px;
+         border-radius: var(--radius-md);
+         background: transparent;
+         border: none;
+         font-size: 14px;
+         font-weight: 600;
+         color: var(--text-secondary);
+         cursor: pointer;
+         transition: all 0.2s;
+         text-align: left;
+     }
+
+     .btm-nav__profile-btn:hover {
+         background: var(--bg-secondary);
+         color: var(--text-primary);
+     }
+
+     .btm-nav__profile-btn--danger {
+         color: #ef4444;
+     }
+
+     .btm-nav__profile-btn--danger:hover {
+         background: rgba(239, 68, 68, 0.08);
+         color: #dc2626;
+     }
+ }
