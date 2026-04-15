@@ -1,3 +1,7 @@
+import mongoose from "mongoose";
+// CRITICAL: This must run before ANY other imports (routes/models)
+mongoose.set("bufferCommands", false);
+
 import config from "./config/index.js";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -6,7 +10,6 @@ import rateLimit from "express-rate-limit";
 import ConnectsDB from "./DB/connect.js";
 import cors from "cors";
 import express from "express";
-import mongoose from "mongoose";
 import notFound from "./middleware/notFound.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 import requestId from "./middleware/requestId.js";
@@ -21,9 +24,6 @@ import healthRouter from "./routes/health.js";
 import weatherRouter from "./routes/weather.js";
 import { csrfProtection } from "./middleware/csrf.js";
 import logger from "./utils/logger.js";
-
-// Disable command buffering globally so Vercel doesn't hang
-mongoose.set("bufferCommands", false);
 
 const app = express();
 
@@ -78,16 +78,26 @@ process.on("uncaughtException", (err) => {
 });
 
 let isConnected = false;
+let dbPromise = null;
 
 // Middleware to ensure DB connection for Vercel Serverless
 app.use(async (req, res, next) => {
-  if (!isConnected && process.env.VERCEL) {
-    try {
-      await ConnectsDB(config.db.url);
-      isConnected = true;
-    } catch (error) {
-      logger.error("Vercel DB connection failed", { message: error.message });
-      return res.status(500).json({ msg: "Database connection error" });
+  if (process.env.VERCEL) {
+    if (!isConnected) {
+      if (!dbPromise) {
+        dbPromise = ConnectsDB(config.db.url).then(() => {
+          isConnected = true;
+        }).catch(err => {
+          dbPromise = null; // Reset for next attempt
+          throw err;
+        });
+      }
+      try {
+        await dbPromise;
+      } catch (error) {
+        logger.error("Vercel DB connection failed", { message: error.message });
+        return res.status(500).json({ msg: "Database connection error", error: error.message });
+      }
     }
   }
   next();
