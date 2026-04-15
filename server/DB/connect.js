@@ -1,21 +1,28 @@
 import mongoose from "mongoose";
 import logger from "../utils/logger.js";
 
-//  Fix #6: Add connection timeouts to avoid silent hangs on cold starts 
 const MONGOOSE_OPTIONS = {
-  serverSelectionTimeoutMS: 5000,   // Fail fast if no server found
-  connectTimeoutMS: 10000,          // Max time to establish initial connection
-  socketTimeoutMS: 45000,           // Max time for a DB operation
+  serverSelectionTimeoutMS: 5000, 
+  connectTimeoutMS: 5000,          // Stop waiting after 5s so we can see the error
+  socketTimeoutMS: 30000,
 };
 
-const ConnectsDB = (url) => {
-  return mongoose
-    .connect(url, MONGOOSE_OPTIONS)
-    .then(() => logger.info("MongoDB connected"))
-    .catch((err) => {
-      logger.error("MongoDB connection failed", { message: err.message });
-      throw err;
-    });
+let cachedConnection = null;
+
+const ConnectsDB = async (url) => {
+  if (cachedConnection) {
+    return cachedConnection;
+  }
+
+  try {
+    cachedConnection = await mongoose.connect(url, MONGOOSE_OPTIONS);
+    logger.info("MongoDB connected");
+    return cachedConnection;
+  } catch (err) {
+    logger.error("MongoDB connection failed", { message: err.message });
+    cachedConnection = null;
+    throw err;
+  }
 };
 
 export default ConnectsDB;
