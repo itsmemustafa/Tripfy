@@ -22,6 +22,9 @@ import weatherRouter from "./routes/weather.js";
 import { csrfProtection } from "./middleware/csrf.js";
 import logger from "./utils/logger.js";
 
+// Disable command buffering globally so Vercel doesn't hang
+mongoose.set("bufferCommands", false);
+
 const app = express();
 
 app.set("trust proxy", 1);
