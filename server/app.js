@@ -74,6 +74,22 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
+let isConnected = false;
+
+// Middleware to ensure DB connection for Vercel Serverless
+app.use(async (req, res, next) => {
+  if (!isConnected && process.env.VERCEL) {
+    try {
+      await ConnectsDB(config.db.url);
+      isConnected = true;
+    } catch (error) {
+      logger.error("Vercel DB connection failed", { message: error.message });
+      return res.status(500).json({ msg: "Database connection error" });
+    }
+  }
+  next();
+});
+
 const start = async () => {
   try {
     await ConnectsDB(config.db.url);
@@ -108,4 +124,8 @@ const start = async () => {
   }
 };
 
-start();
+if (!process.env.VERCEL) {
+  start();
+}
+
+export default app;
