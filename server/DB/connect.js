@@ -3,8 +3,9 @@ import logger from "../utils/logger.js";
 
 const MONGOOSE_OPTIONS = {
   serverSelectionTimeoutMS: 5000, 
-  connectTimeoutMS: 5000,          // Stop waiting after 5s so we can see the error
+  connectTimeoutMS: 10000,
   socketTimeoutMS: 30000,
+  bufferCommands: true, // Re-enable buffering so Mongoose waits for the connection automatically
 };
 
 let cachedConnection = null;

@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-// CRITICAL: This must run before ANY other imports (routes/models)
-mongoose.set("bufferCommands", false);
 
 import config from "./config/index.js";
 import helmet from "helmet";
