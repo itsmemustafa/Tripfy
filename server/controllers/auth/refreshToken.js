@@ -45,8 +45,9 @@ const refreshToken = async (req, res) => {
   const cookieOpts = {
     httpOnly: true,
     signed: true,
-    secure: config.isProd,
-    sameSite: config.isProd ? "none" : "lax",
+    // Required for cross-domain cookies between Localhost and Railway
+    secure: config.isProd || process.env.NODE_ENV === "production",
+    sameSite: config.isProd || process.env.NODE_ENV === "production" ? "none" : "lax",
   };
   res.cookie("token", accessToken, { ...cookieOpts, expires: new Date(Date.now() + oneDay) });
   res.cookie("refreshToken", newRefreshToken, { ...cookieOpts, expires: new Date(Date.now() + thirtyDays) });

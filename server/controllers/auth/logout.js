@@ -33,8 +33,9 @@ const logout = async (req, res) => {
   const clearOpts = {
     httpOnly: true,
     expires: new Date(0),
-    secure: config.isProd,
-    sameSite: config.isProd ? "none" : "lax",
+    // Required for cross-domain cookies between Localhost and Railway
+    secure: config.isProd || process.env.NODE_ENV === "production",
+    sameSite: config.isProd || process.env.NODE_ENV === "production" ? "none" : "lax",
   };
   res.cookie("token", "", clearOpts);
   res.cookie("refreshToken", "", clearOpts);
