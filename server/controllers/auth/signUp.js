@@ -42,6 +42,7 @@ const signup = async (req, res) => {
   res.status(StatusCodes.CREATED).json({
     msg: "User registered successfully",
     user: { name: newUser.name, email: newUser.email, role: newUser.role },
+    accessToken,
   });
 };
 

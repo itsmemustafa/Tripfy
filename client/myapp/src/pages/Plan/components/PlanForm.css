@@ -127,6 +127,31 @@
     color: var(--color-primary);
 }
 
+@media (max-width: 768px) {
+    .plan-card {
+        padding: var(--space-5);
+        border-radius: var(--radius-xl);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-types {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .plan-summary {
+        flex-direction: column;
+        gap: var(--space-3);
+        padding: var(--space-4);
+    }
+
+    .plan-submit {
+        font-size: var(--font-size-sm);
+    }
+}
+
 /* Submit */
 .plan-submit {
     width: 100%;

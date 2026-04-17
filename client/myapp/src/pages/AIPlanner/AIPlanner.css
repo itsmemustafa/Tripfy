@@ -133,6 +133,17 @@
     color: var(--text-muted);
 }
 
+/* Messages area */
+.aip-messages {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 20px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
 /* Typing dots */
 .aip-typing {
     display: flex;

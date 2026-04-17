@@ -17,12 +17,7 @@
 }
 
 .map-spinner {
-    width: 48px;
-    height: 48px;
-    border: 3px solid var(--color-stone-200);
-    border-top-color: var(--color-primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+    /* styling provided by global loader */
 }
 
 @keyframes spin {
@@ -59,27 +54,6 @@
 
 
 @media (max-width: 768px) {
-    .map-location-button {
-        bottom: 100px;
-        right: 16px;
-        min-width: 0;
-        width: 48px;
-        height: 48px;
-        padding: 0;
-        border-radius: 50%;
-    }
-
-    .map-location-button span {
-        display: none;
-    }
-
-    .map-location-error {
-        bottom: 160px;
-        right: 16px;
-        left: 16px;
-        max-width: none;
-    }
-
     /* Move filter toggle down or to top right */
     .map-filter-toggle {
         top: 20px;
@@ -88,28 +62,28 @@
         height: 48px;
     }
 
-    /* Convert Filters panel to a Bottom Sheet */
+    /* Centered mobile filter sheet */
     .map-filters-panel {
         top: auto;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        max-width: 100%;
-        border-radius: 24px 24px 0 0;
-        transform: translateY(100%);
-        max-height: 85vh;
-        z-index: 1090;
-        padding-bottom: 80px;
+        left: 12px;
+        right: 12px;
+        bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        max-width: none;
+        max-height: min(72vh, 560px);
+        border-radius: 22px;
+        transform: translateY(18px) scale(0.98);
+        z-index: 1205;
+        padding-bottom: 0;
     }
 
     .map-filters-panel.is-open {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 
     /* Make content scrollable with padding */
     .map-filters-content {
-        max-height: calc(85vh - 140px);
+        max-height: calc(min(72vh, 560px) - 88px);
         padding: 16px 20px;
     }
 }

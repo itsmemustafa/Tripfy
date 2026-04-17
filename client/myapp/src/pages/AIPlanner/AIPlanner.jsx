@@ -39,6 +39,12 @@ const AIPlanner = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages, isLoading]);
 
+    // Remove stale login-required prompts after successful authentication.
+    useEffect(() => {
+        if (!user) return;
+        setMessages(prev => prev.filter(msg => msg.type !== 'login-required'));
+    }, [user]);
+
     // Fetch user's existing plans for the sidebar
     useEffect(() => {
         if (user) {
@@ -258,12 +264,12 @@ const AIPlanner = () => {
                     'View saved plan',
                 ],
             }]);
-        } catch (error) {
+        } catch {
             setMessages(prev => [...prev, {
                 id: Date.now(),
                 sender: 'ai',
                 type: 'text',
-                content: '❌ Failed to save the plan. Please try again.',
+                content: ' Failed to save the plan. Please try again.',
             }]);
         } finally {
             setIsLoading(false);

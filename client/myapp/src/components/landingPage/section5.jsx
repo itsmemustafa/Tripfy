@@ -16,9 +16,9 @@ const Section5 = () => {
                 alt="Map Preview"
                 className="map-preview-image"
               />
-              <div className="map-pin pin-1">Pin</div>
-              <div className="map-pin pin-2">Pin</div>
-              <div className="map-pin pin-3">Pin</div>
+              <div className="map-pin pin-1">📍</div>
+              <div className="map-pin pin-2">📍</div>
+              <div className="map-pin pin-3">📍</div>
 
               <div className="map-card-overlay">
                 <span>Explore Interactive Map</span>

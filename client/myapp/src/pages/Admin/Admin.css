@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap');
+
 .admin-dashboard {
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 45%, #f8fafc 100%);
     padding: var(--space-6) 0;
     padding-top: 100px;
+    font-family: 'Raleway', var(--font-family);
 }
 
 .admin-container {
@@ -13,7 +16,7 @@
 
 .admin-header {
     text-align: center;
-    color: white;
+    color: var(--text-primary);
     margin-bottom: var(--space-10);
 }
 
@@ -26,7 +29,8 @@
 
 .admin-header p {
     font-size: var(--font-size-lg);
-    opacity: 0.9;
+    color: var(--text-secondary);
+    opacity: 1;
 }
 
 /* Stats Cards */
@@ -88,9 +92,10 @@
     display: flex;
     gap: var(--space-3);
     margin-bottom: var(--space-6);
-    background: rgba(255, 255, 255, 0.1);
+    background: #e6eefc;
     padding: var(--space-2);
     border-radius: var(--radius-2xl);
+    border: 1px solid #d7e3fb;
 }
 
 .admin-tab {
@@ -98,7 +103,7 @@
     padding: var(--space-4);
     border: none;
     background: transparent;
-    color: white;
+    color: #3f5e97;
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
     font-family: var(--font-family);
@@ -108,12 +113,13 @@
 }
 
 .admin-tab:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #dce8ff;
 }
 
 .admin-tab.active {
-    background: white;
+    background: #ffffff;
     color: var(--color-primary);
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.14);
 }
 
 /* Content */
@@ -121,8 +127,9 @@
     background: var(--bg-card);
     border-radius: var(--radius-2xl);
     padding: var(--space-8);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
     min-height: 400px;
+    border: 1px solid #e8eefb;
 }
 
 .admin-loading,
@@ -151,7 +158,7 @@
 }
 
 .admin-table thead {
-    background: var(--bg-body);
+    background: #f4f8ff;
 }
 
 .admin-table th {
@@ -176,7 +183,7 @@
 }
 
 .admin-table tbody tr:hover {
-    background: var(--bg-body);
+    background: #f8fbff;
 }
 
 /* Role Badge */
@@ -218,7 +225,7 @@
 /* Buttons */
 .btn-delete {
     padding: var(--space-2) var(--space-4);
-    background: #DC2626;
+    background: #ef4444;
     color: white;
     border: none;
     border-radius: var(--radius-lg);
@@ -230,13 +237,13 @@
 }
 
 .btn-delete:hover {
-    background: #B91C1C;
+    background: #dc2626;
     transform: translateY(-1px);
 }
 
 .btn-edit {
     padding: var(--space-2) var(--space-4);
-    background: var(--color-primary);
+    background: #2563eb;
     color: white;
     border: none;
     border-radius: var(--radius-lg);
@@ -249,12 +256,12 @@
 }
 
 .btn-edit:hover {
-    background: var(--color-primary-light);
+    background: #1d4ed8;
     transform: translateY(-1px);
 }
 
 .btn-add {
-    background: var(--color-primary);
+    background: #2563eb;
     color: white;
     padding: var(--space-3) var(--space-6);
     border: none;
@@ -269,7 +276,7 @@
 }
 
 .btn-add:hover {
-    background: var(--color-primary-light);
+    background: #1d4ed8;
     transform: translateY(-2px);
     box-shadow: var(--shadow-primary);
 }

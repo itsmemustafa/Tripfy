@@ -5,6 +5,7 @@ import "../../components/landingPage/landingPage.css";
 
 
 const Header = () => {
+  const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { user, isAuthenticated, openAuthModal, logout } = useAuth();
@@ -33,6 +34,8 @@ const Header = () => {
   const handleNavClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  if (isMobile) return null;
 
   return (
     <header className={`header-modern ${isScrolled ? "is-scrolled" : ""}`}>

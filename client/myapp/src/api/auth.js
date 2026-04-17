@@ -1,26 +1,34 @@
 import { env } from '../config/env.js';
-import { request } from './client.js';
+import { clearAccessToken, request, setAccessToken } from './client.js';
 
 const BASE_URL = env.api.endpoints.auth;
 
 export const loginUser = async (email, password) => {
-    return request(`${BASE_URL}/login`, {
+    const data = await request(`${BASE_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
     });
+    if (data?.accessToken) {
+        setAccessToken(data.accessToken);
+    }
+    return data;
 };
 
 export const registerUser = async (name, email, password) => {
-    return request(`${BASE_URL}/signup`, {
+    const data = await request(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name, email, password }),
     });
+    if (data?.accessToken) {
+        setAccessToken(data.accessToken);
+    }
+    return data;
 };
 
 export const logoutUser = async () => {
@@ -30,6 +38,8 @@ export const logoutUser = async () => {
     });
     } catch {
         return null;
+    } finally {
+        clearAccessToken();
     }
 };
 

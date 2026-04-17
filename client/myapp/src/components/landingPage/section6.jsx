@@ -2,7 +2,6 @@ import React from "react";
 import "./landingPage.css";
 import "./section6.css";
 
-
 const Section6 = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +38,7 @@ const Section6 = () => {
                     type="text"
                     id="name"
                     className="form-input"
-                    placeholder="John Doe"
+                    placeholder="mostafa"
                     required
                   />
                 </div>
@@ -51,7 +50,7 @@ const Section6 = () => {
                     type="email"
                     id="email"
                     className="form-input"
-                    placeholder="john@example.com"
+                    placeholder="mostafa@example.com"
                     required
                   />
                 </div>
