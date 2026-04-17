@@ -58,6 +58,16 @@
   /* Add vertical spacing */
 }
 
+@media (max-width: 768px) {
+  .section-divider-container {
+    padding: 0 var(--space-4);
+  }
+
+  .section-divider {
+    margin: var(--space-8) 0;
+  }
+}
+
 @media (min-width: 768px) {
   .section-divider {
     margin: var(--space-16) 0;

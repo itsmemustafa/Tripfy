@@ -212,6 +212,18 @@
      overflow: hidden;
    }
 
+@media (max-width: 768px) {
+  .ai-section,
+  .map-section {
+    padding: var(--space-12) 0;
+  }
+
+  .ai-section__wrapper,
+  .map-section__wrapper {
+    gap: 2rem;
+  }
+}
+
    .ai-section__wrapper,
    .map-section__wrapper {
      display: flex;
@@ -247,6 +259,14 @@
      margin: 2rem 0;
    }
 
+@media (max-width: 768px) {
+  .ai-features {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+}
+
    .ai-feature {
      display: flex;
      gap: 1rem;
@@ -280,6 +300,17 @@
    .chat-mockup:hover {
      transform: perspective(1000px) rotateY(0) rotateX(0) translateY(-10px);
    }
+
+@media (max-width: 768px) {
+  .chat-mockup {
+    max-width: 100%;
+    transform: none;
+  }
+
+  .chat-mockup:hover {
+    transform: none;
+  }
+}
 
    .chat-mockup__header {
      background: var(--color-primary);
@@ -354,6 +385,17 @@
      transform: rotate(0) scale(1.02);
    }
 
+@media (max-width: 768px) {
+  .map-preview-card {
+    transform: none;
+    border-radius: 22px;
+  }
+
+  .map-preview-card:hover {
+    transform: none;
+  }
+}
+
    .map-preview-image {
      width: 100%;
      height: auto;
@@ -415,3 +457,11 @@
      margin: 2rem 0;
      color: var(--text-secondary);
    }
+
+  /* Make primary CTA buttons full-width on mobile */
+  .ai-section .btn.btn-primary.btn-lg,
+  .map-section .btn.btn-secondary.btn-lg,
+  .trip-planner-cta .btn.btn-primary.btn-lg {
+    width: 100%;
+    justify-content: center;
+  }

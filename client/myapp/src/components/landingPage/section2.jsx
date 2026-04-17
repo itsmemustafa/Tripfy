@@ -60,8 +60,9 @@ const Section2 = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    // Start animation if we have places
-    if (places.length > 0 && !loading) {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+    if (!isMobile && places.length > 0 && !loading) {
       animationFrameId = requestAnimationFrame(animate);
     }
 

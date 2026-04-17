@@ -37,7 +37,7 @@ const Section4 = () => {
               </div>
             </div>
 
-            <a href="/ai-planner" className="btn btn-primary btn-lg">
+            <a href="/ai-planner" className="btn btn-primary btn-lg" style={{ width: "100%", justifyContent: "center" }}>
               Open Planner Assistant
             </a>
           </div>
