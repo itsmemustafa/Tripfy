@@ -65,6 +65,7 @@ function AverageBreakdown({ reviews }) {
 
 const ReviewItem = ({ review, currentUser, onDelete, onEdit }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [editRating, setEditRating] = useState(review.rating);
   const [editComment, setEditComment] = useState(review.text || review.comment || "");
 
@@ -119,19 +120,27 @@ const ReviewItem = ({ review, currentUser, onDelete, onEdit }) => {
           <span className="review-date">{date}</span>
         </div>
         {isOwner && (
-            <div className="review-actions" style={{ display: 'flex', gap: '0.5rem' }}>
-                <button
-                    onClick={() => setIsEditing(true)}
-                    style={{ fontSize: "0.8rem", color: "var(--color-primary)", background: "transparent", border: "none", cursor: "pointer", textDecoration: "underline" }}
-                >
-                    Edit
-                </button>
-                <button
-                    onClick={() => onDelete(review.id || review._id)}
-                    style={{ fontSize: "0.8rem", color: "red", background: "transparent", border: "none", cursor: "pointer", textDecoration: "underline" }}
-                >
-                    Delete
-                </button>
+            <div className="review-actions" style={{ display: 'flex', gap: '0.25rem', alignItems: 'center' }}>
+                {isConfirmingDelete ? (
+                  <>
+                    <span style={{ fontSize: '0.75rem', color: 'red', marginRight: '4px' }}>Sure?</span>
+                    <button onClick={() => onDelete(review.id || review._id)} style={{ color: "red", background: "transparent", border: "none", cursor: "pointer", display: "flex", alignItems: "center", padding: "4px" }} title="Yes, delete">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </button>
+                    <button onClick={() => setIsConfirmingDelete(false)} style={{ color: "gray", background: "transparent", border: "none", cursor: "pointer", display: "flex", alignItems: "center", padding: "4px" }} title="Cancel">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button onClick={() => setIsEditing(true)} style={{ color: "var(--color-primary)", background: "transparent", border: "none", cursor: "pointer", display: "flex", alignItems: "center", padding: "4px" }} title="Edit Review">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                    </button>
+                    <button onClick={() => setIsConfirmingDelete(true)} style={{ color: "#ef4444", background: "transparent", border: "none", cursor: "pointer", display: "flex", alignItems: "center", padding: "4px" }} title="Delete Review">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                    </button>
+                  </>
+                )}
             </div>
         )}
       </div>

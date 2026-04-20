@@ -80,7 +80,6 @@ export const usePlaceDetails = (id, isAuthenticated, user) => {
 
   const handleDeleteReview = async (reviewId) => {
     if (!isAuthenticated) return;
-    if (!window.confirm("Are you sure you want to delete this review?")) return;
     try {
       const response = await fetch(`${env.api.endpoints.reviews}/${reviewId}`, {
         method: "DELETE",

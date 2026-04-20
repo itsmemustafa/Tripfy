@@ -3,9 +3,10 @@ import Review from "../../models/review.js";
 
 const updateReview = async (req, res) => {
   const { reviewId } = req.params;
-  const { text, rating } = req.body;
+  const { text, comment, rating } = req.body;
+  const reviewText = text || comment;
 
-  if (!text || rating === undefined) {
+  if (!reviewText || rating === undefined) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: "Missing text or rating" });
@@ -22,7 +23,7 @@ const updateReview = async (req, res) => {
       .status(StatusCodes.FORBIDDEN)
       .json({ message: "Not authorized to update this review" });
   }
-  review.text = text;
+  review.text = reviewText;
   review.rating = rating;
   await review.save();
   res.status(StatusCodes.OK).json({ review });

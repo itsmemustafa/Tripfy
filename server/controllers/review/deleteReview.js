@@ -3,7 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import logger from "../../utils/logger.js";
 
 const deleteReview = async (req, res) => {
-  const { id: reviewId } = req.params;
+  const { reviewId } = req.params;
   const review = await Review.findById(reviewId);
   if (!review) {
     return res
