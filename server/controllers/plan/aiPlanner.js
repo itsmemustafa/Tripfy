@@ -144,7 +144,7 @@ Return:
 {
   "type": "plan",
   "planTitle": "string",
-  "city": "string (Erbil | Sulaymaniyah | Duhok | Halabja)",
+  "city": "string (e.g., Erbil | Baghdad | Basra | Duhok | Sulaymaniyah)",
   "duration": number,
   "planType": "leisure | adventure | family | solo | romantic | business",
   "startDate": "YYYY-MM-DD",

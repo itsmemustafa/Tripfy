@@ -93,7 +93,7 @@ Return ONLY valid JSON without any markdown formatting, code blocks, or extra te
 JSON format:
 {
   "planTitle": "string",
-  "city": "string (Erbil, Sulaymaniyah, or Duhok)",
+  "city": "string (e.g., Erbil, Baghdad, Basra, Duhok, or Sulaymaniyah)",
   "duration": number,
   "planType": "leisure | adventure | family | solo | romantic | business",
   "startDate": "YYYY-MM-DD",
@@ -148,7 +148,7 @@ Return ONLY valid JSON without any markdown formatting, code blocks, or extra te
 JSON format:
 {
   "planTitle": "string",
-  "city": "string (Erbil, Sulaymaniyah, or Duhok)",
+  "city": "string (e.g., Erbil, Baghdad, Basra, Duhok, or Sulaymaniyah)",
   "duration": number,
   "planType": "leisure | adventure | family | solo | romantic | business",
   "startDate": "YYYY-MM-DD",
