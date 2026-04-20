@@ -1,152 +1,138 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import "../../components/landingPage/landingPage.css";
-
+import "../landingPage/section1.css";
 
 const Header = () => {
-  const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
+  const location = useLocation();
+  const isLanding = location.pathname === "/";
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled]             = useState(false);
+  const [isMobile, setIsMobile]                 = useState(() => window.innerWidth <= 768);
+
   const { user, isAuthenticated, openAuthModal, logout } = useAuth();
 
+  /* ── Scroll listener ── */
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { label: "Home", to: "/" },
-    { label: "Destinations", to: "/places" },
-    { label: "PLANNER", to: "/my-plans" },
-    { label: "MAP", to: "/map" },
-    { label: "AI ASSISTANT", to: "/ai-planner" },
-  ];
+  /* ── Resize listener — keeps isMobile in sync on reload & orientation change ── */
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
+  /* ── Close menu on route change ── */
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    // Reset scroll detection on route change
+    setIsScrolled(window.scrollY > 50);
+  }, [location.pathname]);
+
+  /* ── Lock body scroll when mobile menu is open ── */
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileMenuOpen]);
+
+  const navLinks = [
+    { label: "Home",         to: "/" },
+    { label: "Destinations", to: "/places" },
+    { label: "Planner",      to: "/my-plans" },
+    { label: "Map",          to: "/map" },
+    { label: "AI Assistant", to: "/ai-planner" },
+  ];
   if (user?.role === "admin") {
-    navLinks.push({ label: "ADMIN", to: "/admin" });
+    navLinks.push({ label: "Admin", to: "/admin" });
   }
 
-  const handleNavClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+  /* Mobile uses BottomNav — no top header needed */
   if (isMobile) return null;
 
+  const headerClass = `header-modern${isScrolled ? " is-scrolled" : ""}`;
+
   return (
-    <header className={`header-modern ${isScrolled ? "is-scrolled" : ""}`}>
+    <header className={headerClass}>
       <div className="container header__container">
         {/* Logo */}
-        <Link to="/" className="header__logo" onClick={handleNavClick}>
-          <span className="header__logo-text">Tripfy</span>
+        <Link to="/" className="header__logo">
+          Tripfy
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="header__nav">
+        {/* Desktop nav */}
+        <nav className="header__nav" aria-label="Main navigation">
           <ul className="header__nav-list">
             {navLinks.map((link) => (
               <li key={link.label}>
-                {link.to.startsWith("#") ? (
-                  <a href={link.to} className="header__nav-link">
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    to={link.to}
-                    className={`header__nav-link ${link.label === 'AI ASSISTANT' ? 'header__nav-link--ai' : ''}`}
-                    onClick={handleNavClick}
-                  >
-                    {link.label}
-                  </Link>
-                )}
+                <Link
+                  to={link.to}
+                  className={`header__nav-link${link.label === "AI Assistant" ? " header__nav-link--ai" : ""}`}
+                >
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Right Action - Book Trip */}
+        {/* Auth actions */}
         <div className="header__actions">
           {isAuthenticated ? (
             <div className="header__user-menu">
-              <span className="header__user-name"> {user?.name}</span>
+              <span className="header__user-name">{user?.name}</span>
               <button className="btn-book-trip" onClick={logout}>
                 Logout
               </button>
             </div>
           ) : (
-            <button
-              className="btn-book-trip"
-              onClick={() => openAuthModal("login")}
-            >
+            <button className="btn-book-trip" onClick={() => openAuthModal("login")}>
               Login
             </button>
           )}
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile toggle */}
         <button
-          className={`header__mobile-toggle ${isMobileMenuOpen ? "is-active" : ""}`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className={`header__mobile-toggle${isMobileMenuOpen ? " is-active" : ""}`}
+          onClick={() => setIsMobileMenuOpen(v => !v)}
           aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span /><span /><span />
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`header__mobile-menu ${isMobileMenuOpen ? "is-open" : ""}`}
-      >
+      {/* Mobile fullscreen menu */}
+      <div className={`header__mobile-menu${isMobileMenuOpen ? " is-open" : ""}`}>
         <nav className="header__mobile-nav">
           <ul className="header__mobile-list">
             {navLinks.map((link) => (
               <li key={link.label}>
-                {link.to.startsWith("#") ? (
-                  <a
-                    href={link.to}
-                    className="header__mobile-link"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    to={link.to}
-                    className="header__mobile-link"
-                    onClick={() => {
-                      handleNavClick();
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                )}
+                <Link
+                  to={link.to}
+                  className="header__mobile-link"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
           <div className="header__mobile-actions">
             {isAuthenticated ? (
-              <button
-                className="btn-book-trip"
-                onClick={logout}
-                style={{ width: "100%" }}
-              >
+              <button className="btn-book-trip" onClick={logout} style={{ width: "100%" }}>
                 Logout
               </button>
             ) : (
               <button
                 className="btn-book-trip"
-                onClick={() => {
-                  openAuthModal("login");
-                  setIsMobileMenuOpen(false);
-                }}
                 style={{ width: "100%" }}
+                onClick={() => { openAuthModal("login"); setIsMobileMenuOpen(false); }}
               >
                 Login
               </button>
