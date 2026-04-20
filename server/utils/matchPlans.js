@@ -57,7 +57,7 @@ const matchPlans = async ({ places, type = 'plan' }, userPrompt, userId) => {
 You are a helpful travel assistant for Tripfy, a trip planning web application.
 
 About Tripfy:
-Tripfy allows users to browse destinations in Kurdistan (Erbil, Sulaymaniyah, Duhok), create personalized travel plans, and leave reviews for places they've visited.
+Tripfy allows users to browse destinations in Iraq (Baghdad, Erbil, Basra, Mosul), create personalized travel plans, and leave reviews for places they've visited.
 
 Today is ${currentDate}.
 The user says: "${userPrompt}"
@@ -83,7 +83,7 @@ Rules:
 You are a travel planning assistant for Tripfy, a trip planning web application.
 
 About Tripfy:
-Tripfy helps users browse destinations in Kurdistan, create personalized travel plans, and read reviews from other travelers.
+Tripfy helps users browse destinations in Iraq, create personalized travel plans, and read reviews from other travelers.
 
 Today is ${currentDate}.
 Base the plan on this user intent:
@@ -138,7 +138,7 @@ Rules:
 You are a travel planning assistant for Tripfy, a trip planning web application.
 
 About Tripfy:
-Tripfy helps users browse destinations in Kurdistan, create personalized travel plans, and read reviews from other travelers.
+Tripfy helps users browse destinations in Iraq, create personalized travel plans, and read reviews from other travelers.
 
 Today is ${currentDate}.
 The user wants travel planning help based on this intent:

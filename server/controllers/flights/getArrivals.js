@@ -39,13 +39,13 @@ const getArrivals = async (req, res) => {
       });
     }
 
-    // Kurdistan airports
-    const kurdistanAirports = ["EBL", "ISU"]; // Erbil, Sulaymaniyah
+    // Iraq airports
+    const iraqAirports = ["EBL", "ISU", "BGW", "BSR", "NJF"]; // Erbil, Sulaymaniyah, Baghdad, Basra, Najaf
 
-    // Fetch arrivals for all Kurdistan airports
+    // Fetch arrivals for all Iraq airports
     const allFlights = [];
 
-    for (const airport of kurdistanAirports) {
+    for (const airport of iraqAirports) {
       try {
         const response = await fetch(
           `http://api.aviationstack.com/v1/flights?access_key=${process.env.FLIGHT_API_KEY}&arr_iata=${airport}&flight_status=active,landed&limit=100`

@@ -9,7 +9,7 @@ dotenv.config();
  * We use high-quality Unsplash images representing mountains, waterfalls, historical ruins, and parks.
  * The original wikipedia hotlinks were removed as they can break or have low resolution.
  */
-const kurdistanPlaces = [
+const iraqPlaces = [
   // ─── Erbil (Hawler) ────────────────────────────────────────────────────────
   {
     name: "Erbil Citadel (Qalat Hawler)",
@@ -69,7 +69,7 @@ const kurdistanPlaces = [
       coordinates: { lat: 36.2284, lng: 43.9876 },
     },
     description:
-      "A vibrant suburb of Erbil known for its lively café culture, restaurants, bars, and churches. It's a popular destination for nightlife, food, and cultural exchange in Kurdistan.",
+      "A vibrant suburb of Erbil known for its lively café culture, restaurants, bars, and churches. It's a popular destination for nightlife, food, and cultural exchange in Iraq.",
     images: [
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200",
       "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1200",
@@ -137,7 +137,7 @@ const kurdistanPlaces = [
       coordinates: { lat: 37.1497, lng: 42.6768 },
     },
     description:
-      "A magnificent ancient stone bridge spanning the Khabur River in Zakho. Remarkably well-preserved, Pira Dalal is one of the most iconic historical landmarks in Kurdistan.",
+      "A magnificent ancient stone bridge spanning the Khabur River in Zakho. Remarkably well-preserved, Pira Dalal is one of the most iconic historical landmarks in Iraq.",
     images: [
       "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&q=80&w=1200",
       "https://images.unsplash.com/photo-1520686665-27a33a39e832?auto=format&fit=crop&q=80&w=1200",
@@ -205,7 +205,7 @@ const kurdistanPlaces = [
       coordinates: { lat: 36.6781, lng: 44.5327 },
     },
     description:
-      "One of the most spectacular waterfalls in Iraq, plunging through a dramatic canyon gorge. The towering cliffs make it a top natural attraction in Kurdistan.",
+      "One of the most spectacular waterfalls in Iraq, plunging through a dramatic canyon gorge. The towering cliffs make it a top natural attraction in Iraq.",
     images: [
       "https://images.unsplash.com/photo-1517409259837-128caff156cd?auto=format&fit=crop&q=80&w=1200",
       "https://images.unsplash.com/photo-1482845622037-ee11ad9ad0e0?auto=format&fit=crop&q=80&w=1200",
@@ -228,6 +228,54 @@ const kurdistanPlaces = [
     ],
     rating: 4.6,
   },
+  // ─── Baghdad ──────────────────────────────────────────────────────────────────
+  {
+    name: "Al-Mutanabbi Street",
+    category: "Cultural",
+    subcategory: "Historic Street",
+    location: {
+      city: "Baghdad",
+      coordinates: { lat: 33.3400, lng: 44.3888 },
+    },
+    description:
+      "The historic center of Baghdad bookselling, famous for its energetic weekend markets and thriving intellectual culture. It remains the heart of literacy and culture in Iraq.",
+    images: [
+      "https://images.unsplash.com/photo-1574360773950-2580a501a3cd?auto=format&fit=crop&q=80&w=1200"
+    ],
+    rating: 4.9,
+  },
+  // ─── Basra ──────────────────────────────────────────────────────────────────
+  {
+    name: "Shatt al-Arab",
+    category: "Nature",
+    subcategory: "River",
+    location: {
+      city: "Basra",
+      coordinates: { lat: 30.5258, lng: 47.8800 },
+    },
+    description:
+      "The magnificent river formed by the confluence of the Euphrates and the Tigris, lined with palm trees and dotted with boats. A significant natural and economic lifeline of Basra.",
+    images: [
+      "https://images.unsplash.com/photo-1628172151624-b153ff2a7e78?auto=format&fit=crop&q=80&w=1200"
+    ],
+    rating: 4.6,
+  },
+  // ─── Mosul ──────────────────────────────────────────────────────────────────
+  {
+    name: "Great Mosque of al-Nuri",
+    category: "Historical",
+    subcategory: "Mosque",
+    location: {
+      city: "Mosul",
+      coordinates: { lat: 36.3422, lng: 43.1258 },
+    },
+    description:
+      "Famous for its leaning minaret (Al-Hadba), this historic 12th-century mosque is one of the most remarkable landmarks of Mosul's rich history.",
+    images: [
+      "https://images.unsplash.com/photo-1548689816-c399f954f3dd?auto=format&fit=crop&q=80&w=1200"
+    ],
+    rating: 4.8,
+  }
 ];
 
 async function seedDatabase() {
@@ -250,8 +298,8 @@ async function seedDatabase() {
       console.log("🗑️  Cleared existing places.");
     }
 
-    const inserted = await Place.insertMany(kurdistanPlaces);
-    console.log(`\n🌱 Seeded ${inserted.length} Kurdistan places successfully!\n`);
+    const inserted = await Place.insertMany(iraqPlaces);
+    console.log(`\n🌱 Seeded ${inserted.length} Iraq places successfully!\n`);
 
     inserted.forEach((p, i) => {
       console.log(`  ${i + 1}. ${p.name} — ${p.location.city} (${p.category})`);

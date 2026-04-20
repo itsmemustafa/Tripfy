@@ -116,7 +116,7 @@ function buildSystemPrompt(currentDate, currentPlan, places) {
 
     const placesJSON = JSON.stringify(places, null, 2);
 
-    return `You are a travel planning AI assistant for Tripfy, a trip planning app for Kurdistan.
+    return `You are a travel planning AI assistant for Tripfy, a trip planning app for Iraq.
 
 Today is ${currentDate}.
 ${planContext}
