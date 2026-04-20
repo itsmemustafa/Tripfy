@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { getPlaces } from '../../../api/places';
 
 export const usePlaces = () => {
+    const locationObj = useLocation();
+    const queryParams = new URLSearchParams(locationObj.search);
+    const initialLocation = queryParams.get('location') || '';
+
     const [places, setPlaces] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -10,7 +15,7 @@ export const usePlaces = () => {
     const [filters, setFilters] = useState({
         search: '',
         category: '',
-        location: '', 
+        location: initialLocation, 
         sort: '-createdAt'
     });
 
