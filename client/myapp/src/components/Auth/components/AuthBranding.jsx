@@ -21,8 +21,8 @@ const AuthBranding = ({ modalMode }) => {
                 </h2>
                 <p className="auth-branding__text">
                     {modalMode === 'login'
-                        ? 'Sign in to access your personalized travel plans and discover new adventures in Kurdistan.'
-                        : 'Create an account to start planning your dream trip through the beautiful landscapes of Kurdistan.'}
+                        ? 'Sign in to access your personalized travel plans and discover new adventures in Iraq.'
+                        : 'Create an account to start planning your dream trip through the beautiful landscapes of Iraq.'}
                 </p>
                 <div className="auth-branding__features">
                     <div className="auth-branding__feature">

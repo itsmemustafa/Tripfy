@@ -20,7 +20,7 @@ const Section1 = () => {
                 <br />
                 The Magic Of
                 <br />
-                Kurdistan
+                Iraq
               </h1>
 
               <div className="hero-modern__cta-row">
@@ -46,13 +46,13 @@ const Section1 = () => {
               <img
                 className="hero-modern__poster"
                 src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=80&auto=format&fit=crop"
-                alt="Kurdistan landscape"
+                alt="Iraq landscape"
                 loading="eager"
               />
               <iframe
                 className="hero-modern__video"
                 src="https://www.youtube.com/embed/HLml5SWtsgo?autoplay=1&mute=1&loop=1&playlist=HLml5SWtsgo&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1"
-                title="Kurdistan Nature"
+                title="Iraq Nature"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 style={{ pointerEvents: "none" }}

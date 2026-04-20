@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CATEGORIES = ['Nature', 'Historical', 'Restaurant', 'Cafe', 'Adventure', 'Religious'];
-const LOCATIONS = ['Erbil', 'Sulaymaniyah', 'Duhok'];
+const LOCATIONS = ['Baghdad', 'Erbil', 'Basra', 'Mosul', 'Sulaymaniyah', 'Duhok'];
 
 const PlacesSidebar = ({ filters, handleFilterChange }) => (
     <aside className="places__filters">

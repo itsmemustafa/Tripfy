@@ -87,7 +87,7 @@ const Section2 = () => {
               Popular <span className="text-gradient">Destinations</span>
             </h2>
             <p className="section-description">
-              Browse popular destinations across Kurdistan
+              Browse popular destinations across Iraq
             </p>
           </div>
         </div>
@@ -120,7 +120,7 @@ const Section2 = () => {
                   <PlaceCard
                     image={place.images?.[0]}
                     title={place.name}
-                    location={place.location?.city || "Kurdistan"}
+                    location={place.location?.city || "Iraq"}
                     rating={place.rating || 0}
                     description={place.description}
                     category={place.category}
@@ -137,7 +137,7 @@ const Section2 = () => {
                   <PlaceCard
                     image={place.images?.[0]}
                     title={place.name}
-                    location={place.location?.city || "Kurdistan"}
+                    location={place.location?.city || "Iraq"}
                     rating={place.rating || 0}
                     description={place.description}
                     category={place.category}

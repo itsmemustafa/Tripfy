@@ -43,7 +43,7 @@ const PlacesGrid = ({ places, loading, error, clearFilters }) => {
                     key={place._id}
                     image={place.images?.[0]}
                     title={place.name}
-                    location={place.location?.city || 'Kurdistan'}
+                    location={place.location?.city || 'Iraq'}
                     rating={place.rating || 0}
                     description={place.description}
                     category={place.category}

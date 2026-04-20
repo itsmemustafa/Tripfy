@@ -24,7 +24,7 @@ const EmptyState = () => (
         <div className="my-plans-empty__icon">Trips</div>
         <h2 className="my-plans-empty__title">No trips yet</h2>
         <p className="my-plans-empty__text">
-            Start planning your next trip in Kurdistan.
+            Start planning your next trip in Iraq.
         </p>
         <Link to="/plan" className="btn btn-primary">
             Create Your First Trip

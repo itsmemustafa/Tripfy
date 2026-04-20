@@ -54,7 +54,7 @@ const Section4 = () => {
               </div>
               <div className="chat-mockup__body">
                 <div className="chat-message ai">
-                  <p>Hello! Where would you like to go in Kurdistan?</p>
+                  <p>Hello! Where would you like to go in Iraq?</p>
                 </div>
                 <div className="chat-message user">
                   <p>

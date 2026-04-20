@@ -83,7 +83,7 @@ const PlaceDetails = () => {
             <h2 className="place-details__section-title">About this place</h2>
             <p className="place-details__description">
               {place.description ||
-                "A destination in Kurdistan with history and local attractions."}
+                "A destination in Iraq with history and local attractions."}
             </p>
 
             <PlaceMap place={place} />

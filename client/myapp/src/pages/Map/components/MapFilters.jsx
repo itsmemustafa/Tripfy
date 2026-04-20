@@ -2,7 +2,7 @@ import React from 'react';
 import './MapFilters.css';
 
 const CATEGORIES = ['Nature', 'Historical', 'Restaurant', 'Cafe', 'Adventure', 'Religious'];
-const CITIES = ['Erbil', 'Sulaymaniyah', 'Duhok', 'Halabja', 'Zakho'];
+const CITIES = ['Baghdad', 'Basra', 'Mosul', 'Erbil', 'Sulaymaniyah', 'Duhok', 'Halabja', 'Zakho'];
 
 const MapFilters = ({
     filtersOpen,

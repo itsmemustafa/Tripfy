@@ -14,9 +14,9 @@ const Places = () => {
         <div className="places-page">
             <div className="places__container">
                 <div className="places__header">
-                    <h1 className="places__title">Explore Kurdistan</h1>
+                    <h1 className="places__title">Explore Iraq</h1>
                     <p className="places__subtitle">
-                        Discover hidden gems, historical landmarks, and breathtaking nature in the heart of Kurdistan.
+                        Discover hidden gems, historical landmarks, and breathtaking nature in the heart of Iraq.
                     </p>
                 </div>
 

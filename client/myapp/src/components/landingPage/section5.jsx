@@ -31,7 +31,7 @@ const Section5 = () => {
             <span className="section-tag">Interactive Map</span>
 
             <h2 className="heading-2">
-              Explore Kurdistan <br />
+              Explore Iraq <br />
               <span className="text-gradient">Visually</span>
             </h2>
 

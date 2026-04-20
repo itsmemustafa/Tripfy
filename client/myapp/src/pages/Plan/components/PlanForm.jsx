@@ -11,7 +11,7 @@ const PlanForm = ({ tripDetails, handleInputChange, handleSubmit, submitting, me
     { value: "romantic", label: "Romantic" },
     { value: "business", label: "Business" },
   ];
-  const cities = ["Erbil", "Sulaymaniyah", "Duhok"];
+  const cities = ["Baghdad", "Erbil", "Basra", "Mosul", "Sulaymaniyah", "Duhok"];
   const totalSelectedPlaces = Object.values(dayPlaces).reduce((acc, list) => acc + list.length, 0);
 
   return (
@@ -38,7 +38,7 @@ const PlanForm = ({ tripDetails, handleInputChange, handleSubmit, submitting, me
         <form onSubmit={handleSubmit} className="plan-form">
           <div className="form-group">
             <label htmlFor="title">Trip Name</label>
-            <input type="text" id="title" name="title" value={tripDetails.title} onChange={handleInputChange} placeholder="My Kurdistan Adventure" required />
+            <input type="text" id="title" name="title" value={tripDetails.title} onChange={handleInputChange} placeholder="My Iraq Adventure" required />
           </div>
 
           <div className="form-group">

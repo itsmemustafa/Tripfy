@@ -8,7 +8,10 @@ const Footer = () => {
 
   const footerLinks = {
     explore: [
+      { label: "Baghdad", href: "#destinations" },
       { label: "Erbil", href: "#destinations" },
+      { label: "Basra", href: "#destinations" },
+      { label: "Mosul", href: "#destinations" },
       { label: "Sulaymaniyah", href: "#destinations" },
       { label: "Duhok", href: "#destinations" },
       { label: "All Destinations", href: "#destinations" },
@@ -31,7 +34,7 @@ const Footer = () => {
               <span>Tripfy</span>
             </Link>
             <p className="footer__tagline">
-              Your gateway to discovering the breathtaking beauty of Kurdistan.
+              Your gateway to discovering the breathtaking beauty of Iraq.
               Plan unforgettable adventures with us.
             </p>
           </div>

@@ -18,7 +18,7 @@ const Section6 = () => {
             Get in <span className="text-gradient">Touch</span>
           </h2>
           <p className="section-description">
-            Have questions about your next trip to Kurdistan? We're here to
+            Have questions about your next trip to Iraq? We're here to
             help.
           </p>
         </div>

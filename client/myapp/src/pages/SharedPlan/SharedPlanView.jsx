@@ -122,7 +122,7 @@ const SharedPlanView = () => {
                 {/* CTA */}
                 <div className="spv-cta">
                     <h3>Want to plan your own trip?</h3>
-                    <p>Create a free account and use our AI planner to build your perfect Kurdistan itinerary.</p>
+                    <p>Create a free account and use our AI planner to build your perfect Iraq itinerary.</p>
                     <Link to="/" className="btn btn-primary">Get Started on Tripfy</Link>
                 </div>
             </div>
