@@ -78,6 +78,16 @@ const PlaceDetails = () => {
 
         <PlaceGallery place={place} />
 
+        {/* ── Mobile-only: Quick Actions Bar ── */}
+        <div className="place-details__actions-bar">
+          <button className="btn btn-primary" onClick={handleAddToItinerary}>
+            Add to Itinerary
+          </button>
+          <button className="btn btn-secondary" onClick={handleGoogleMapsClick}>
+            Directions
+          </button>
+        </div>
+
         <div className="place-details__content">
           <div className="place-details__main">
             <h2 className="place-details__section-title">About this place</h2>
@@ -85,6 +95,11 @@ const PlaceDetails = () => {
               {place.description ||
                 "A destination in Iraq with history and local attractions."}
             </p>
+
+            {/* ── Mobile-only: Inline Weather ── */}
+            <div className="place-details__weather-inline">
+              <WeatherWidget placeId={id} />
+            </div>
 
             <PlaceMap place={place} />
 

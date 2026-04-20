@@ -23,6 +23,24 @@
   }
 }
 
+/* ── Mobile-only: Quick Actions Bar ── */
+.place-details__actions-bar {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.place-details__actions-bar .btn {
+  flex: 1;
+  justify-content: center;
+  padding: 0.9rem;
+}
+
+/* ── Mobile-only: Inline Weather ── */
+.place-details__weather-inline {
+  margin-bottom: var(--space-8);
+}
+
 
 /* Content Layout */
 .place-details__content {
@@ -56,6 +74,14 @@
 @media (min-width: 1024px) {
   .place-details__sidebar {
     display: block;
+  }
+  
+  /* Hide mobile-only inline blocks on desktop */
+  .place-details__actions-bar {
+    display: none;
+  }
+  .place-details__weather-inline {
+    display: none;
   }
 }
 
