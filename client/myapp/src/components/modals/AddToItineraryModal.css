@@ -1,3 +1,119 @@
+/* ── Base overlay & content — self-contained so Portal works everywhere ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+    animation: modal-fade-in 0.25s ease-out;
+}
+
+@keyframes modal-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--bg-card, #fff);
+    border-radius: var(--radius-2xl, 16px);
+    padding: var(--space-8, 2rem);
+    width: 90%;
+    max-width: 520px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+    animation: modal-slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+@keyframes modal-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4, 1rem);
+}
+
+.modal-title {
+    font-size: var(--font-size-xl, 1.25rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--text-primary, #0f172a);
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted, #94a3b8);
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: color 0.15s, background 0.15s;
+}
+
+.modal-close:hover {
+    color: var(--text-primary, #0f172a);
+    background: var(--color-stone-100, #f1f5f9);
+}
+
+.modal-body {
+    flex: 1;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3, 0.75rem);
+    margin-top: var(--space-6, 1.5rem);
+    padding-top: var(--space-4, 1rem);
+    border-top: 1px solid var(--color-stone-100, #f1f5f9);
+}
+
+/* Mobile: slide up from bottom like a native sheet */
+@media (max-width: 640px) {
+    .modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+        max-height: 88vh;
+        animation: modal-sheet-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modal-sheet-up {
+        from {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* ── AddToItinerary-specific styles below ────────────────── */
 .add-itinerary-modal {
     max-width: 600px;
     max-height: 80vh;

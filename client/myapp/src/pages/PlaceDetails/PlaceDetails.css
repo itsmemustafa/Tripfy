@@ -40,6 +40,8 @@
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
+  /* On mobile, main content goes below the weather card */
+  order: 1;
 }
 
 .place-details__sidebar {
@@ -47,12 +49,29 @@
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
+  /* Hidden on mobile — weather + actions appear inline above */
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .place-details__sidebar {
+    display: block;
+  }
 }
 
 @media (min-width: 1024px) {
   .place-details__content {
     grid-template-columns: 2fr 1fr;
     gap: var(--space-12);
+  }
+
+  /* Reset order on desktop — sidebar goes right naturally */
+  .place-details__main {
+    order: unset;
+  }
+
+  .place-details__sidebar {
+    order: unset;
   }
 }
 

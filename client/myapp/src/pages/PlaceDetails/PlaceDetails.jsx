@@ -19,7 +19,7 @@ import "../../components/reviews/reviews.css";
 const PlaceDetails = () => {
   const { id } = useParams();
   const { user, isAuthenticated, openAuthModal } = useAuth();
-  
+
   const {
     place, reviews, loading, error, submittingReview,
     hasMoreReviews, loadingMoreReviews, totalReviews,
@@ -73,9 +73,9 @@ const PlaceDetails = () => {
   return (
     <div className="place-details">
       <div className="place-details__container">
-        
+
         <PlaceHeader place={place} />
-        
+
         <PlaceGallery place={place} />
 
         <div className="place-details__content">
