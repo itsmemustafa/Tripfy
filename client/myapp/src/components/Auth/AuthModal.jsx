@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import './AuthModal.css';
-import AuthBranding from './components/AuthBranding';
 import AuthForm from './components/AuthForm';
 
 const AuthModal = () => {
@@ -113,7 +112,6 @@ const AuthModal = () => {
 
                 {/* Modal Content */}
                 <div className="auth-content">
-                    <AuthBranding modalMode={modalMode} />
                     <AuthForm
                         modalMode={modalMode}
                         formData={formData}
