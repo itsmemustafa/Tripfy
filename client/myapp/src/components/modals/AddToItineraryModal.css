@@ -221,7 +221,7 @@
 
 .plan-option--selected {
     border-color: var(--color-primary);
-    background: rgba(37, 99, 235, 0.05);
+    background: rgba(84, 122, 149, 0.05);
 }
 
 .plan-option__radio {

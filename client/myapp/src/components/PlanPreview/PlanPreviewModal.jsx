@@ -28,7 +28,7 @@ const PlanPreviewModal = ({
 
   const getPlanTypeColor = (type) => {
     const colors = {
-      leisure: "#3b82f6",
+      leisure: "var(--color-primary-light)",
       adventure: "#f97316",
       family: "#8b5cf6",
       solo: "#06b6d4",

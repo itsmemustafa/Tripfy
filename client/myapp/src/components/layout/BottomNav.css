@@ -30,7 +30,7 @@
          border-radius: 28px;
          padding: 6px 8px;
          box-shadow:
-             0 -2px 20px rgba(37, 99, 235, 0.25),
+             0 -2px 20px rgba(84, 122, 149, 0.25),
              0 4px 24px rgba(0, 0, 0, 0.12);
          pointer-events: auto;
          width: 100%;
@@ -172,7 +172,7 @@
          width: 44px;
          height: 44px;
          border-radius: 50%;
-         background: rgba(37, 99, 235, 0.1);
+         background: rgba(84, 122, 149, 0.1);
          color: var(--color-primary);
          display: flex;
          align-items: center;

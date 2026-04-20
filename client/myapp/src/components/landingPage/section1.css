@@ -85,7 +85,7 @@
 
 /* AI Assistant link */
 .header-modern .header__nav-link--ai {
-  color: var(--color-primary, #2563eb);
+  color: var(--color-primary, var(--color-primary));
   font-weight: 600;
   position: relative;
   padding-left: 12px;
@@ -100,7 +100,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--color-primary, #2563eb);
+  background: var(--color-primary, var(--color-primary));
 }
 
 .header-modern .header__nav-link--ai:hover {

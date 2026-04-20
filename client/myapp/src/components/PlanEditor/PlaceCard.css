@@ -21,14 +21,14 @@
 }
 
 .place-card:hover {
-    border-color: #3b82f6;
+    border-color: var(--color-primary-light);
 }
 
 .place-order-badge {
     flex-shrink: 0;
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
     color: white;
     border-radius: 50%;
     display: flex;
@@ -86,7 +86,7 @@
 
 .place-note-input:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: var(--color-primary-light);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 

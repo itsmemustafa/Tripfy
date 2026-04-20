@@ -89,7 +89,7 @@
 }
 
 .aip-badge--primary {
-    background: rgba(37, 99, 235, 0.08);
+    background: rgba(84, 122, 149, 0.08);
     color: var(--color-primary);
 }
 
@@ -220,7 +220,7 @@
 .aip-chip:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
-    background: rgba(37, 99, 235, 0.05);
+    background: rgba(84, 122, 149, 0.05);
 }
 
 /* Input row */
@@ -246,7 +246,7 @@
 .aip-input:focus {
     border-color: var(--color-primary);
     background: var(--bg-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px rgba(84, 122, 149, 0.1);
 }
 
 .aip-input::placeholder {

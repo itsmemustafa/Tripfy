@@ -11,7 +11,7 @@
 
 .section-tag {
   display: inline-block;
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(84, 122, 149, 0.08);
   color: var(--color-primary);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);

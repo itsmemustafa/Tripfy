@@ -42,8 +42,8 @@
  }
 
  .progress-step.active .progress-dot {
-     background: #3b82f6;
-     border-color: #3b82f6;
+     background: var(--color-primary-light);
+     border-color: var(--color-primary-light);
      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
  }
 
@@ -59,7 +59,7 @@
  }
 
  .progress-step.active .progress-label {
-     color: #3b82f6;
+     color: var(--color-primary-light);
  }
 
  @media (max-width: 768px) {

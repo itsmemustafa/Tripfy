@@ -138,7 +138,7 @@
 .places__search-input:focus {
     border-color: var(--color-primary);
     outline: none;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 4px rgba(84, 122, 149, 0.1);
     background: white;
 }
 

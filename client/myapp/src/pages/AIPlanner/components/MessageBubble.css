@@ -36,9 +36,9 @@
 }
 
 .aip-avatar--ai {
-    background: rgba(37, 99, 235, 0.1);
+    background: rgba(84, 122, 149, 0.1);
     color: var(--color-primary);
-    border: 1px solid rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(84, 122, 149, 0.15);
 }
 
 .aip-avatar--user {
@@ -120,8 +120,8 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
     color: var(--color-primary);
-    background: rgba(37, 99, 235, 0.06);
-    border: 1px solid rgba(37, 99, 235, 0.15);
+    background: rgba(84, 122, 149, 0.06);
+    border: 1px solid rgba(84, 122, 149, 0.15);
     border-radius: var(--radius-sm);
     padding: 8px 16px;
     cursor: pointer;
@@ -129,7 +129,7 @@
 }
 
 .aip-view-plan-btn:hover {
-    background: rgba(37, 99, 235, 0.12);
+    background: rgba(84, 122, 149, 0.12);
     border-color: var(--color-primary);
 }
 

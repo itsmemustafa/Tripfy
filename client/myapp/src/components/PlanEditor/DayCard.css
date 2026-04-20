@@ -42,7 +42,7 @@
 }
 
 .drag-handle:hover {
-    color: #3b82f6;
+    color: var(--color-primary-light);
 }
 
 .drag-handle:active {
@@ -97,7 +97,7 @@
 
 .icon-btn:hover:not(:disabled) {
     background: #f3f4f6;
-    border-color: #3b82f6;
+    border-color: var(--color-primary-light);
     transform: translateY(-2px);
 }
 

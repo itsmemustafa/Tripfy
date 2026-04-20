@@ -52,7 +52,7 @@
      gap: 0.5rem;
      padding: 0.5rem 1rem;
      background: #eff6ff;
-     color: #2563eb;
+     color: var(--color-primary);
      border-radius: 50px;
      font-size: 0.85rem;
      font-weight: 600;
@@ -117,7 +117,7 @@
    }
 
    .coming-soon__input:focus {
-     border-color: #2563eb;
+     border-color: var(--color-primary);
    }
 
    /* Visual Side */
