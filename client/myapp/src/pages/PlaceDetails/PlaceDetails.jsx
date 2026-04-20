@@ -23,7 +23,7 @@ const PlaceDetails = () => {
   const {
     place, reviews, loading, error, submittingReview,
     hasMoreReviews, loadingMoreReviews, totalReviews,
-    handleReviewSubmit, loadMoreReviews
+    handleReviewSubmit, loadMoreReviews, handleDeleteReview, handleEditReview
   } = usePlaceDetails(id, isAuthenticated, user);
 
   const {
@@ -129,7 +129,12 @@ const PlaceDetails = () => {
                 </div>
               )}
 
-              <ReviewList reviews={reviews} />
+              <ReviewList 
+                reviews={reviews} 
+                currentUser={user}
+                onDelete={handleDeleteReview}
+                onEdit={handleEditReview}
+              />
 
               {hasMoreReviews && (
                 <div className="reviews-load-more-container">

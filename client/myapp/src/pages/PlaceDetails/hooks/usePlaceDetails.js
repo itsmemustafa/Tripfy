@@ -78,6 +78,50 @@ export const usePlaceDetails = (id, isAuthenticated, user) => {
     }
   };
 
+  const handleDeleteReview = async (reviewId) => {
+    if (!isAuthenticated) return;
+    if (!window.confirm("Are you sure you want to delete this review?")) return;
+    try {
+      const response = await fetch(`${env.api.endpoints.reviews}/${reviewId}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (response.ok) {
+        setReviews(reviews.filter((r) => r._id !== reviewId));
+        setTotalReviews(prev => Math.max(0, prev - 1));
+      } else {
+        const data = await response.json();
+        alert(data.message || "Failed to delete review");
+      }
+    } catch (err) {
+      console.error("Error deleting review:", err);
+      alert("Error deleting review");
+    }
+  };
+
+  const handleEditReview = async (reviewId, { rating, comment }) => {
+    if (!isAuthenticated) return;
+    try {
+      const response = await fetch(`${env.api.endpoints.reviews}/${reviewId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ rating, comment, placeId: id }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setReviews(reviews.map((r) => 
+          r._id === reviewId ? { ...r, rating, text: comment, comment } : r
+        ));
+      } else {
+        alert(data.message || "Failed to update review");
+      }
+    } catch (err) {
+      console.error("Error updating review:", err);
+      alert("Error updating review");
+    }
+  };
+
   const loadMoreReviews = async () => {
     if (loadingMoreReviews || !hasMoreReviews) return;
     try {
@@ -101,6 +145,6 @@ export const usePlaceDetails = (id, isAuthenticated, user) => {
   return {
     place, reviews, loading, error, submittingReview,
     hasMoreReviews, loadingMoreReviews, totalReviews,
-    handleReviewSubmit, loadMoreReviews
+    handleReviewSubmit, loadMoreReviews, handleDeleteReview, handleEditReview
   };
 };

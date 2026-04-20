@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./reviews.css";
 
 const AVATAR_PALETTES = [
@@ -63,7 +63,88 @@ function AverageBreakdown({ reviews }) {
   );
 }
 
-const ReviewList = ({ reviews }) => {
+const ReviewItem = ({ review, currentUser, onDelete, onEdit }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editRating, setEditRating] = useState(review.rating);
+  const [editComment, setEditComment] = useState(review.text || review.comment || "");
+
+  const name = review.user?.name || review.user?.username || "Anonymous";
+  const palette = getAvatarPalette(name);
+  const date = new Date(review.createdAt || Date.now()).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+  
+  const isOwner = currentUser && (review.user?._id === currentUser.userId || review.user?.id === currentUser.userId || review.user === currentUser.userId);
+
+  const handleSave = () => {
+    onEdit(review.id || review._id, { rating: editRating, comment: editComment });
+    setIsEditing(false);
+  };
+
+  if (isEditing) {
+    return (
+      <div className="review-card">
+        <div className="review-card-top" style={{ marginBottom: '1rem' }}>
+          <strong>Edit your review</strong>
+        </div>
+        <div style={{ marginBottom: "1rem" }}>
+          <label>Rating: </label>
+          <select value={editRating} onChange={(e) => setEditRating(Number(e.target.value))}>
+            {[1, 2, 3, 4, 5].map(v => <option key={v} value={v}>{v} Star{v > 1 && 's'}</option>)}
+          </select>
+        </div>
+        <textarea
+          style={{ width: "100%", minHeight: "80px", padding: "0.5rem", borderRadius: "8px", border: "1px solid #ccc", marginBottom: "1rem" }}
+          value={editComment}
+          onChange={(e) => setEditComment(e.target.value)}
+        />
+        <div style={{ display: "flex", gap: "0.5rem" }}>
+          <button className="btn btn-primary" style={{ padding: '0.4rem 1rem' }} onClick={handleSave}>Save</button>
+          <button className="btn btn-secondary" style={{ padding: '0.4rem 1rem' }} onClick={() => setIsEditing(false)}>Cancel</button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="review-card">
+      <div className="review-card-top">
+        <div className="review-avatar" style={{ background: palette.bg, color: palette.color }}>
+          {getInitials(name)}
+        </div>
+        <div className="review-meta" style={{ flexGrow: 1 }}>
+          <span className="review-author">{name}</span>
+          <span className="review-date">{date}</span>
+        </div>
+        {isOwner && (
+            <div className="review-actions" style={{ display: 'flex', gap: '0.5rem' }}>
+                <button
+                    onClick={() => setIsEditing(true)}
+                    style={{ fontSize: "0.8rem", color: "var(--color-primary)", background: "transparent", border: "none", cursor: "pointer", textDecoration: "underline" }}
+                >
+                    Edit
+                </button>
+                <button
+                    onClick={() => onDelete(review.id || review._id)}
+                    style={{ fontSize: "0.8rem", color: "red", background: "transparent", border: "none", cursor: "pointer", textDecoration: "underline" }}
+                >
+                    Delete
+                </button>
+            </div>
+        )}
+      </div>
+      <div className="review-rating">
+        {"★".repeat(review.rating)}
+        <span className="review-rating-empty">{"★".repeat(5 - review.rating)}</span>
+      </div>
+      <p className="review-text">{review.text || review.comment}</p>
+    </div>
+  );
+};
+
+const ReviewList = ({ reviews, currentUser, onDelete, onEdit }) => {
   if (!reviews || reviews.length === 0) {
     return (
       <div className="no-reviews">
@@ -84,43 +165,15 @@ const ReviewList = ({ reviews }) => {
       <AverageBreakdown reviews={reviews} />
 
       <div className="reviews-list">
-        {reviews.map((review) => {
-          const name = review.user?.name || "Anonymous";
-          const palette = getAvatarPalette(name);
-          const date = new Date(
-            review.createdAt || Date.now()
-          ).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          });
-
-          return (
-            <div key={review.id || review._id} className="review-card">
-              <div className="review-card-top">
-                <div
-                  className="review-avatar"
-                  style={{ background: palette.bg, color: palette.color }}
-                >
-                  {getInitials(name)}
-                </div>
-                <div className="review-meta">
-                  <span className="review-author">{name}</span>
-                  <span className="review-date">{date}</span>
-                </div>
-              </div>
-
-              <div className="review-rating">
-                {"★".repeat(review.rating)}
-                <span className="review-rating-empty">
-                  {"★".repeat(5 - review.rating)}
-                </span>
-              </div>
-
-              <p className="review-text">{review.text || review.comment}</p>
-            </div>
-          );
-        })}
+        {reviews.map((review) => (
+          <ReviewItem 
+            key={review.id || review._id} 
+            review={review} 
+            currentUser={currentUser} 
+            onDelete={onDelete} 
+            onEdit={onEdit} 
+          />
+        ))}
       </div>
     </div>
   );
