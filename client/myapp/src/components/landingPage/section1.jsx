@@ -8,19 +8,19 @@ const Section1 = () => {
     <section id="home" className="hero-modern">
       <div className="container hero-modern__container">
         <div className="hero-modern__bg">
-          {/* Left Content */}
+
+          {/* ── LEFT: Text Content ── */}
           <div className="hero-modern__content">
-            {/* Text Content */}
             <div className="hero-modern__text-group">
+
               <span className="hero-modern__overline">
-                ELEVATE YOUR TRAVEL JOURNEY
+                Elevate Your Travel Journey
               </span>
+
               <h1 className="hero-modern__title">
-                Explore
-                <br />
-                The Magic Of
-                <br />
-                Iraq
+                Explore<br />
+                The <em>Magic</em><br />
+                Of Iraq
               </h1>
 
               <div className="hero-modern__cta-row">
@@ -35,18 +35,19 @@ const Section1 = () => {
               <div className="hero-modern__chips" aria-label="Key features">
                 <span className="hero-chip">Real places</span>
                 <span className="hero-chip">AI planning</span>
-                <span className="hero-chip">Save and share</span>
+                <span className="hero-chip">Save &amp; share</span>
               </div>
+
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* ── RIGHT: Immersive Photo Panel ── */}
           <div className="hero-modern__visual">
             <div className="hero-modern__video-container">
               <img
                 className="hero-modern__poster"
-                src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=80&auto=format&fit=crop"
-                alt="Iraq landscape"
+                src="https://images.unsplash.com/photo-1560204301-dd7e5a5b7c1f?w=1800&q=85&auto=format&fit=crop"
+                alt="Ancient Iraq landscape"
                 loading="eager"
               />
               <iframe
@@ -59,31 +60,24 @@ const Section1 = () => {
               />
             </div>
 
-            {/* Floating Card */}
+            {/* Floating "Discover Iraq" micro-card */}
             <div className="hero-modern__float-card">
-              <div className="float-card__header"></div>
+              <div className="float-card__header">Awesome Places</div>
               <div className="float-card__content">
                 <div className="avatars-group">
-                  <img
-                    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop"
-                    alt="Place 1"
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?w=100&h=100&fit=crop"
-                    alt="Place 2"
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=100&h=100&fit=crop"
-                    alt="Place 3"
-                  />
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop" alt="Place 1" />
+                  <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?w=100&h=100&fit=crop" alt="Place 2" />
+                  <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=100&h=100&fit=crop" alt="Place 3" />
                 </div>
                 <div className="float-card__text">
-                  <strong>Awesome Places</strong>
-                  <p>Discover The World One Adventure At A Time!</p>
+                  <strong>Discover Iraq</strong>
+                  <p>One adventure at a time</p>
                 </div>
               </div>
             </div>
+
           </div>
+
         </div>
       </div>
     </section>
