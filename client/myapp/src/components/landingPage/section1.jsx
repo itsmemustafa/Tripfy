@@ -53,23 +53,23 @@ const Section1 = () => {
 
         <div className="hero-modern__gallery">
           <Link to="/places?location=Sulaymaniyah" className="hero-modern__gallery-item">
-            <img src="public/sulaymaniyah.jpg" alt="Sulaymaniyah" loading="lazy" />
+            <img src="/sulaymaniyah.jpg" alt="Sulaymaniyah" loading="lazy" />
             <div className="gallery-item__overlay"><span>Sulaymaniyah</span></div>
           </Link>
           <Link to="/places?location=Erbil" className="hero-modern__gallery-item">
-            <img src="public/erbil.jpg" alt="Erbil" loading="eager" />
+            <img src="/erbil.jpg" alt="Erbil" loading="eager" />
             <div className="gallery-item__overlay"><span>Erbil</span></div>
           </Link>
           <Link to="/places?location=Baghdad" className="hero-modern__gallery-item">
-            <img src="public/baghdad.jpg" alt="Baghdad" loading="lazy" />
+            <img src="/baghdad.jpg" alt="Baghdad" loading="lazy" />
             <div className="gallery-item__overlay"><span>Baghdad</span></div>
           </Link>
           <Link to="/places?location=Basra" className="hero-modern__gallery-item">
-            <img src="public/basra.jpg" alt="Basra" loading="lazy" />
+            <img src="/basra.jpg" alt="Basra" loading="lazy" />
             <div className="gallery-item__overlay"><span>Basra</span></div>
           </Link>
           <Link to="/places?location=Duhok" className="hero-modern__gallery-item">
-            <img src="public/duhok.jpg" alt="Duhok" loading="lazy" />
+            <img src="/duhok.jpg" alt="Duhok" loading="lazy" />
             <div className="gallery-item__overlay"><span>Duhok</span></div>
           </Link>
         </div>
