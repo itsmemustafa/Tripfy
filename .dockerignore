@@ -1,0 +1,41 @@
+
+# Version control
+.git
+.gitignore
+
+# All node_modules (each service reinstalls in its own container)
+node_modules
+**/node_modules
+
+# All env files — secrets are injected at runtime
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Build outputs
+client/myapp/dist
+dist
+build
+.next
+
+# IDE / OS
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# CI / docs
+.github
+README.md
+CLAUDE.md
+TODO.TXT
+*.md.resolved
+
+# Test outputs
+coverage
+test-output

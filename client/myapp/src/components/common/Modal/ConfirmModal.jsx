@@ -1,0 +1,43 @@
+import React from "react";
+import "./ConfirmModal.css";
+
+const ConfirmModal = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  title,
+  message,
+  confirmText = "Delete",
+  cancelText = "Cancel",
+  type = "danger",
+}) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="confirm-modal-overlay" onClick={onClose}>
+      <div className="confirm-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="confirm-modal__content">
+          {type === "danger" && <div className="confirm-modal__icon">Warning</div>}
+          <h3 className="confirm-modal__title">{title}</h3>
+          <p className="confirm-modal__message">{message}</p>
+        </div>
+        <div className="confirm-modal__actions">
+          <button
+            className="confirm-modal__btn confirm-modal__btn--cancel"
+            onClick={onClose}
+          >
+            {cancelText}
+          </button>
+          <button
+            className="confirm-modal__btn confirm-modal__btn--confirm"
+            onClick={onConfirm}
+          >
+            {confirmText}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ConfirmModal;

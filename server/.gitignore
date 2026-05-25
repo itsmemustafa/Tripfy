@@ -1,0 +1,4 @@
+# server/.gitignore — defers to root; adds server-only rules
+
+# Test environment config (not covered by root's relative patterns)
+vitest.config.*.local

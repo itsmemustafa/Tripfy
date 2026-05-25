@@ -1,0 +1,329 @@
+.weather-widget {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  animation: weatherFadeIn 0.5s ease-out forwards;
+}
+
+/*  Header  */
+.weather-widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.weather-widget__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.weather-widget__city {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/*  Unit toggle  */
+.weather-widget__unit-toggle {
+  display: flex;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  border: 1px solid var(--color-stone-200);
+}
+
+.weather-widget__unit-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.weather-widget__unit-btn.is-active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.weather-widget__unit-btn:hover:not(.is-active) {
+  color: var(--text-primary);
+}
+
+/*  Forecast scroll area  */
+.weather-widget__forecast {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-stone-300) transparent;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.weather-widget__forecast::-webkit-scrollbar {
+  height: 4px;
+}
+
+.weather-widget__forecast::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.weather-widget__forecast::-webkit-scrollbar-thumb {
+  background: var(--color-stone-300);
+  border-radius: var(--radius-full);
+}
+
+/*  Day card  */
+.weather-day {
+  flex: 0 0 calc((100% - 6 * var(--space-2)) / 7.2);
+  min-width: 58px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--color-stone-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  cursor: default;
+  transition: all 0.22s ease;
+  animation: dayCardIn 0.4s ease-out both;
+}
+
+.weather-day:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--color-stone-300);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.weather-day.is-today {
+  background: var(--color-forest-50);
+  border-color: var(--color-primary-light);
+}
+
+/* Stagger children */
+.weather-day:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.weather-day:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.weather-day:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.weather-day:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.weather-day:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.weather-day:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.weather-day:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+/*  Day – text elements  */
+.weather-day__name {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.weather-day.is-today .weather-day__name {
+  color: var(--color-primary);
+}
+
+.weather-day__emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+  margin: var(--space-1) 0;
+}
+
+.weather-day__max {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.weather-day__min {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-muted);
+}
+
+.weather-day__rain {
+  font-size: 10px;
+  color: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.weather-day__rain-icon {
+  font-size: 10px;
+}
+
+/*  Footer / attribution  */
+.weather-widget__footer {
+  margin-top: var(--space-3);
+  text-align: right;
+}
+
+.weather-widget__attribution {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/*  Loading skeleton  */
+.weather-widget--loading {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.weather-widget__skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.weather-widget__skeleton-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: hidden;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.skeleton-block {
+  background: var(--color-stone-200);
+  border-radius: var(--radius-sm);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-block--title {
+  width: 120px;
+  height: 24px;
+}
+
+.skeleton-block--sub {
+  width: 80px;
+  height: 14px;
+  margin-top: 4px;
+}
+
+.skeleton-block--toggle {
+  width: 60px;
+  height: 26px;
+  border-radius: var(--radius-full);
+}
+
+.skeleton-day {
+  flex: 0 0 calc((100% - 6 * var(--space-2)) / 7.2);
+  min-width: 58px;
+  height: 120px;
+  background: var(--color-stone-100);
+  border-radius: var(--radius-lg);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-day:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.skeleton-day:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.skeleton-day:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.skeleton-day:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.skeleton-day:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.skeleton-day:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+/*  Error state  */
+.weather-widget__error {
+  text-align: center;
+  padding: var(--space-4) 0;
+}
+
+.weather-widget__error-emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.weather-widget__error-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-earth-500);
+  line-height: 1.5;
+}
+
+/*  Animations  */
+@keyframes weatherFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dayCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}

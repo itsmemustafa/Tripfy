@@ -1,0 +1,12 @@
+{
+  "name": "tripfy-root",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client/myapp"
+  ],
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js"
+  }
+}

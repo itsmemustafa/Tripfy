@@ -1,0 +1,16 @@
+/* Map Marker */
+.map-marker {
+    cursor: pointer;
+    color: var(--color-primary);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.map-marker:hover {
+    transform: scale(1.15);
+    color: var(--color-primary-dark);
+}
+
+.map-marker svg {
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+}
+

@@ -1,0 +1,65 @@
+/* Map Popup */
+.map-popup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 220px;
+    max-width: 300px;
+}
+
+.map-popup-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2);
+}
+
+.map-popup-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0;
+    margin-bottom: var(--space-2);
+}
+
+.map-popup-button {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: var(--font-family);
+}
+
+.map-popup-button:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+/* Override react-map-gl popup styles */
+.mapboxgl-popup-content {
+    padding: var(--space-5) !important;
+    border-radius: var(--radius-2xl) !important;
+    box-shadow: var(--shadow-xl) !important;
+}
+
+.mapboxgl-popup-close-button {
+    font-size: 20px !important;
+    color: var(--text-secondary) !important;
+    padding: var(--space-2) !important;
+    right: var(--space-2) !important;
+    top: var(--space-2) !important;
+}
+
+.mapboxgl-popup-close-button:hover {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-body) !important;
+    border-radius: 50% !important;
+}
+

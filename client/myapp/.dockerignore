@@ -1,0 +1,24 @@
+# ── client/myapp/.dockerignore ──────────────────────────────
+# Build context: ./client/myapp  (used by docker compose)
+
+# Dependencies (reinstalled in container)
+node_modules
+
+# Built artifacts (regenerated in container)
+dist
+
+# Env files — secrets never bake into images
+.env
+.env.*
+!.env.example
+
+# IDE / OS
+.vscode
+.idea
+*.swp
+.DS_Store
+Thumbs.db
+
+# Docs
+README.md
+*.md

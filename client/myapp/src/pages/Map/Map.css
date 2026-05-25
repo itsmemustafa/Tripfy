@@ -1,0 +1,89 @@
+.map-page {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Loading State */
+.map-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--bg-body);
+    gap: var(--space-4);
+}
+
+.map-spinner {
+    /* styling provided by global loader */
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.map-loading p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+/* Error State */
+.map-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--bg-body);
+    padding: var(--space-4);
+}
+
+.map-error p {
+    color: var(--color-accent-dark);
+    font-size: var(--font-size-lg);
+    text-align: center;
+}
+
+.map-gl-container {
+    width: 100%;
+    height: 100vh;
+}
+
+
+@media (max-width: 768px) {
+    /* Move filter toggle down or to top right */
+    .map-filter-toggle {
+        top: 20px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+
+    /* Centered mobile filter sheet */
+    .map-filters-panel {
+        top: auto;
+        left: 12px;
+        right: 12px;
+        bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        max-width: none;
+        max-height: min(72vh, 560px);
+        border-radius: 22px;
+        transform: translateY(18px) scale(0.98);
+        z-index: 1205;
+        padding-bottom: 0;
+    }
+
+    .map-filters-panel.is-open {
+        transform: translateY(0) scale(1);
+    }
+
+    /* Make content scrollable with padding */
+    .map-filters-content {
+        max-height: calc(min(72vh, 560px) - 88px);
+        padding: 16px 20px;
+    }
+}
