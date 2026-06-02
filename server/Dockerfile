@@ -1,28 +1,28 @@
 # Tripfy Backend Dockerfile
+#
+# Railway uses the repo root as the Docker build context.
+# docker compose uses ./server as the context (see docker-compose.yml).
 
 FROM node:22-alpine
 
-# Add dumb-init for graceful shutdowns
-RUN apk add --no-cache dumb-init
+ARG APP_DIR=server
 
-# Setup non-root user
+RUN apk add --no-cache dumb-init
 RUN addgroup -S tripfy && adduser -S tripfy -G tripfy
+
 WORKDIR /app
 
-# Install production dependencies
-COPY package.json package-lock.json* ./
+# Install production dependencies from the server package (not the workspace root).
+COPY ${APP_DIR}/package.json ${APP_DIR}/package-lock.json* ./
 RUN npm install --omit=dev
 
-COPY . .
+COPY ${APP_DIR}/ .
 
-# Prevent accidental secret leakage
 RUN rm -f .env
 
-# Run as non-root
 USER tripfy
 
 EXPOSE 3000
 
-# Start server using dumb-init
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["node", "app.js"]

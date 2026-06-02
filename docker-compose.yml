@@ -8,8 +8,10 @@ services:
   # Backend container
   backend:
     build:
-      context: ./server
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: server/Dockerfile
+      args:
+        APP_DIR: server
     image: tripfy-backend
     container_name: tripfy-backend
     restart: unless-stopped
