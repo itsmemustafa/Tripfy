@@ -33,5 +33,21 @@ describe("Auth validators", () => {
     expect(res.statusCode).toBe(400);
     expect(res.body.msg ?? res.body.message).toBeDefined();
   });
-});
 
+  it("rejects a role supplied during public signup", async () => {
+    const { default: authRoutes } = await import("../routes/auth.js");
+    const app = buildAuthTestApp(authRoutes);
+
+    const res = await request(app).post("/api/v1/auth/signup").send({
+      name: "Test User",
+      email: "test@example.com",
+      password: "123456",
+      role: "admin",
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body.msg ?? res.body.message).toContain(
+      "Role cannot be set during public signup"
+    );
+  });
+});

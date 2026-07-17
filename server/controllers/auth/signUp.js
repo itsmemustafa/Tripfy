@@ -4,12 +4,14 @@ import { StatusCodes } from "http-status-codes";
 import crypto from "crypto";
 
 const signup = async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password } = req.body;
 
 
 
   // Create user
-  const newUser = await User.create({ name, email, password, role });
+  // Public registration must never allow callers to choose a privileged role.
+  // The schema assigns the safe default role ("user").
+  const newUser = await User.create({ name, email, password });
 
   // Generate tokens
 
