@@ -30,6 +30,16 @@ app.set("trust proxy", 1);
 app.use(helmet());
 app.use(requestId);
 
+// Run CORS first so browser preflight responses always receive CORS headers.
+app.use(
+  cors({
+    origin(origin, callback) {
+      callback(null, config.cors.isAllowedOrigin(origin));
+    },
+    credentials: config.cors.credentials,
+  })
+);
+
 app.use(morgan(config.isProd ? "combined" : "dev"));
 
 app.use(compression());
@@ -44,12 +54,6 @@ app.use(express.json({ limit: "512kb" }));
 app.use(express.urlencoded({ extended: true, limit: "512kb" }));
 app.use(cookieParser(config.cookie.signedSecret));
 app.use(csrfProtection);
-app.use(
-  cors({
-    origin: config.cors.origins,
-    credentials: config.cors.credentials,
-  })
-);
 
 // Serve uploaded images statically
 app.use("/uploads", express.static("public/uploads"));

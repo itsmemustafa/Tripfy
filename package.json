@@ -7,6 +7,11 @@
   ],
   "scripts": {
     "start": "node server/app.js",
-    "dev": "nodemon server/app.js"
+    "dev": "node scripts/dev.mjs",
+    "dev:server": "npm run dev --workspace=server",
+    "dev:client": "npm run dev --workspace=client/myapp",
+    "seed": "npm run seed --workspace=server",
+    "test": "npm test --workspace=server",
+    "build": "npm run build --workspace=client/myapp"
   }
 }

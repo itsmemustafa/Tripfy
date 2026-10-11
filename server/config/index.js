@@ -4,7 +4,11 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const envPath = path.join(__dirname, "..", ".env");
-dotenv.config({ path: envPath });
+const localEnvPath = path.join(__dirname, "..", ".env.local");
+
+// Local overrides are gitignored. Missing values fall back to server/.env,
+// so secrets do not need to be duplicated.
+dotenv.config({ path: [localEnvPath, envPath] });
 
 const required = ["MONGO_URL", "JWT_SECRET"];
 const missing = required.filter((key) => !process.env[key]);
@@ -21,6 +25,26 @@ const corsOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(",").map((o) => o.trim()).filter(Boolean)
   : ["https://tripfy-myapp.vercel.app", "http://localhost:5173", "http://localhost:5174"];
 
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+  if (corsOrigins.includes(origin)) return true;
+
+  // Vite may select a different port when 5173 is occupied.
+  if (!isProd) {
+    try {
+      const { hostname, protocol } = new URL(origin);
+      return (
+        (hostname === "localhost" || hostname === "127.0.0.1" || hostname === "[::1]") &&
+        (protocol === "http:" || protocol === "https:")
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  return false;
+};
+
 export default {
   env,
   isProd,
@@ -34,6 +58,7 @@ export default {
   },
   cors: {
     origins: corsOrigins,
+    isAllowedOrigin,
     credentials: true,
   },
   cookie: {

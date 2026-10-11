@@ -2,6 +2,9 @@ import { GoogleGenAI } from "@google/genai";
 import OpenAI from "openai";
 import logger from "./logger.js";
 
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const GROQ_MODEL = process.env.GROQ_MODEL || "openai/gpt-oss-20b";
+
 /**
  * Accepts a system prompt + array of chat messages [{ role, content }]
  * Tries providers in order: Gemini (key1) → Gemini (key2) → Groq → DeepSeek
@@ -28,11 +31,16 @@ const generateWithGemini = async (genAiInstance, systemPrompt, messages) => {
   }));
 
   const response = await genAiInstance.models.generateContent({
-    model: "gemini-1.5-pro",
-    systemInstruction: systemPrompt,
+    model: GEMINI_MODEL,
     contents,
+    config: {
+      systemInstruction: systemPrompt,
+      responseMimeType: "application/json",
+      temperature: 0.3,
+    },
   });
 
+  if (response.text?.trim()) return response.text.trim();
   if (response.candidates?.[0]?.content?.parts?.[0]?.text) {
     return response.candidates[0].content.parts[0].text;
   }
@@ -73,7 +81,7 @@ const generateWithGroq = async (systemPrompt, messages) => {
   });
   return generateWithOpenAICompat(
     groq,
-    "llama-3.3-70b-versatile",
+    GROQ_MODEL,
     systemPrompt,
     messages,
   );
