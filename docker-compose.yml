@@ -5,6 +5,22 @@
 # Access: http://localhost (port 80)
 
 services:
+  # Local database for a self-contained development/demo stack
+  mongo:
+    image: mongo:8.0
+    container_name: tripfy-mongo
+    restart: unless-stopped
+    volumes:
+      - tripfy-mongo-data:/data/db
+    networks:
+      - tripfy-net
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
   # Backend container
   backend:
     build:
@@ -22,9 +38,14 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3000
+      MONGO_URL: mongodb://mongo:27017/tripfy
 
     networks:
       - tripfy-net
+
+    depends_on:
+      mongo:
+        condition: service_healthy
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/v1/health"]
@@ -61,3 +82,6 @@ services:
 networks:
   tripfy-net:
     driver: bridge
+
+volumes:
+  tripfy-mongo-data:

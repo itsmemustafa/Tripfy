@@ -14,7 +14,7 @@ WORKDIR /app
 
 # Install production dependencies from the server package (not the workspace root).
 COPY ${APP_DIR}/package.json ${APP_DIR}/package-lock.json* ./
-RUN npm install --omit=dev
+RUN npm ci --omit=dev --legacy-peer-deps
 
 COPY ${APP_DIR}/ .
 
